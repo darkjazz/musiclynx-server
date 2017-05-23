@@ -1,5 +1,5 @@
 var express = require('express');
-var mb = require('../modules/musicbrainz');
+var mb = require('./modules/musicbrainz');
 var module_mb = express.Router();
 
 module_mb.get('/', function(req, res) {

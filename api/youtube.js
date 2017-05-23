@@ -1,5 +1,5 @@
 var express = require('express');
-var yt = require('../modules/youtube');
+var yt = require('./modules/youtube');
 var module_yt = express.Router();
 
 module_yt.get('/search_videos/:searchTerm', function(req, res) {
