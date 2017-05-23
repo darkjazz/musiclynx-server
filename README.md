@@ -1,6 +1,6 @@
 ## MusicLynx server
 
-This is the server component of MuscLynx (https://github.com/darkjazz/musiclynx)
+This is the server component of MusicLynx (https://github.com/darkjazz/musiclynx)
 
 The component can be started by typing the following in the command line terminal:
 ```
