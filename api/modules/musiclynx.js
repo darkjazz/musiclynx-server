@@ -5,7 +5,7 @@ var fs = require('fs');
 var dt = require('date-and-time');
 var prefixes = require('./prefixes').prefixes;
 
-const dbName = "musiclynx_artists";
+const dbName = "musicbrainz_artists";
 const couch = new CouchDB();
 
 var createContext = function(obj) {
@@ -18,6 +18,26 @@ var createContext = function(obj) {
     }
   }
   return context;
+}
+
+module.exports.search_artists = function (term, cb) {
+  var start = term;
+  var end = term + "Z";
+  var opts = { "startkey": start, "endkey": end };
+  couch.get(dbName, "_design/views/_view/artist_mbid_by_name", opts).then(( get_res ) => {
+    var artists = [];
+    get_res.data.rows.forEach(function(row) {
+      artists.push({ name: row.key, id: row.value });
+    });
+    cb(artists);
+  }, err => {
+    if (err.code == "EDOCMISSING") {
+      cb({ error: "NOT FOUND" });
+    }
+    else {
+      cb({ error: err });
+    }
+  });
 }
 
 module.exports.get_artist = function (id, cb) {

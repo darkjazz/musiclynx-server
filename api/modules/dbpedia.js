@@ -32,6 +32,28 @@ module.exports.get_artist_abstract = function(mbid, name, cb) {
   })
 }
 
+
+module.exports.get_artist_abstract_directly = function(dbpedia_uri, cb) {
+  console.log(dbpedia_uri);
+  params = { URI: dbpedia_uri, LANG: "en" };
+  query = qb.buildQuery("artist_abstract", params);
+  dps.client()
+    .query(query)
+    .timeout(defaultTimeout)
+    .asJson()
+    .then(function(r) {
+      if (r.results.bindings.length > 0 && dbpedia_uri != r.results.bindings[0].dbpedia_uri.value ) {
+        dbpedia_uri = r.results.bindings[0].dbpedia_uri.value;
+      }
+      var json = {
+        about: r.results.bindings[0].about.value,
+        abstract: r.results.bindings[0].abs.value,
+        dbpedia_uri: dbpedia_uri };
+      cb(json);
+    })
+    .catch(function(e) { cb(e) });
+}
+
 module.exports.get_associated_artists = function(dbpedia_uri, cb) {
   var query, params;
   params = { URI: dbpedia_uri, LANG: "en" };

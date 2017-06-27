@@ -15,6 +15,13 @@ module_dbp.get('/get_artist_abstract/:mbid/:name', function(req, res) {
   });
 });
 
+module_dbp.get('/get_artist_abstract_directly/:dbpedia_uri', function(req, res) {
+  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  dbp.get_artist_abstract_directly(dbp_uri, function(abstract) {
+    res.send(abstract);
+  });
+});
+
 module_dbp.get('/get_associated_artists/:dbpedia_uri', function(req, res) {
   var dbp_uri = b64.decode(req.params.dbpedia_uri);
   dbp.get_associated_artists(dbp_uri, function(artists) {
