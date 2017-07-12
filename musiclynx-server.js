@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 
 var app = module.exports = express();
 
+var ip = process.env.MUSICLYNX_SERVER_PORT || 7757;
+
 app.use(cors());
 
 app.use(bodyParser.json());
@@ -17,11 +19,12 @@ app.use('/sameas', require('./api/sameas'));
 app.use('/acousticbrainz', require('./api/acousticbrainz'));
 app.use('/moodplay', require('./api/moodplay'));
 app.use('/youtube', require('./api/youtube'));
+app.use('/lastfm', require('./api/lastfm'));
 
 app.get('/', function (req, res) {
   res.send('MusicLynx Server Root..')
 });
 
-app.listen(7757, function () {
-  console.log('MusicLynx server listening on port 7757!')
+app.listen(ip, function () {
+  console.log('MusicLynx server listening on port ' + ip + '!')
 });

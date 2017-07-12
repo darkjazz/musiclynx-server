@@ -11,7 +11,7 @@ var engine = new EmbedEngine({
 engine.registerDefaultProviders();
 
 const MAX_RESULTS = 10;
-const APIKEY = "AIzaSyD3EX9tyyO_Rur72mXbrxteI9S5ImojN9Y";
+const APIKEY = process.env.YOUTUBE_API_KEY || "" ;
 
 module.exports.search_videos = function(searchTerm, cb) {
   search(searchTerm, { maxResults: MAX_RESULTS, key: APIKEY }, function(err, results) {

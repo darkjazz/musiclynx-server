@@ -2,7 +2,7 @@ var request = require("request");
 
 var mburi = "http://musicbrainz.org";
 var artist_search_template = '/ws/2/artist/?query=artist:%&fmt=json';
-var user_agent = 'MusicLynx/0.1.0 (a.allik@qmul.ac.uk)';
+var user_agent = process.env.MUSICBRAINZ_USER_AGENT || "";
 
 module.exports.artist_search = function(searchTerm, cb) {
   var query = artist_search_template.replace('%', encodeURIComponent(searchTerm));
