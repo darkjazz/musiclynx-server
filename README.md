@@ -7,6 +7,11 @@ The component can be started by typing the following in the command line termina
 node musiclynx-server.js
 ```
 
+In order to initialise environmental variables including various API keys, modify the init.sh script and then run it:
+```
+./init.sh
+```
+
 ## License
 
 You touch it, you die! All rights reserved in other words.
