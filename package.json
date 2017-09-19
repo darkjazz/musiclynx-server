@@ -4,7 +4,8 @@
   "description": "musiclynx expressjs server component",
   "main": "musiclynx-server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node musiclynx-server.js"
   },
   "author": "",
   "license": "ISC",
