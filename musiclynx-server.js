@@ -5,7 +5,8 @@ var bodyParser = require('body-parser');
 
 var app = module.exports = express();
 
-// var ip = process.env.MUSICLYNX_SERVER_PORT || 7757;
+//var ip = process.env.MUSICLYNX_SERVER_PORT || 7757;
+var ip = process.env.PORT || 8080;
 var db_active = false;
 
 app.use(cors());
@@ -30,5 +31,5 @@ app.get('/', function (req, res) {
 });
 
 app.listen(ip, function () {
-  console.log('MusicLynx server listening on some port!')
+  console.log('MusicLynx server listening on default port!')
 });
