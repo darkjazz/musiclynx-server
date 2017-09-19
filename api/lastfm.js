@@ -14,4 +14,16 @@ module_lfm.get('/get_top_tags/:mbid/:name', function(req, res) {
   })
 });
 
+module_lfm.get('/get_top_track_tags/:mbid/:name/:artist', function(req, res) {
+  lfm.get_top_track_tags(req.params.mbid, req.params.name, req.params.artist, function(tags) {
+    res.send(tags);
+  })
+});
+
+module_lfm.get('/get_track_info/:name/:artist', function(req, res) {
+  lfm.get_track_info(req.params.name, req.params.artist, function(tags) {
+    res.send(tags);
+  })
+});
+
 module.exports = module_lfm;

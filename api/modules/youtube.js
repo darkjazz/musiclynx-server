@@ -14,12 +14,11 @@ const MAX_RESULTS = 10;
 const APIKEY = process.env.YOUTUBE_API_KEY || "" ;
 
 module.exports.search_videos = function(searchTerm, cb) {
-  search(searchTerm, { maxResults: MAX_RESULTS, key: APIKEY }, function(err, results) {
+  search(searchTerm, { maxResults: MAX_RESULTS, key: APIKEY, type: "video" }, function(err, results) {
     if(err) cb(err);
     else {
       var embeds = [];
       results.forEach(function (row) {
-        console.log(row.link);
         embeds.push(new Embed(row.link));
       });
       engine.getMultipleEmbeds(embeds, function (error, embedResults) {

@@ -24,3 +24,19 @@ module.exports.get_top_tags = function(mbid, name, cb) {
     else cb(data["tag"])
   })
 }
+
+module.exports.get_top_track_tags = function(mbid, name, artist, cb) {
+  lastfm.trackTopTags({ name: decodeURIComponent(name), artistName: decodeURIComponent(artist) }, (err, data) => {
+    console.log(err);
+    if (err) cb({ error: err })
+    else cb(data)
+  })
+}
+
+module.exports.get_track_info = function(name, artist, cb) {
+  lastfm.trackInfo({ name: decodeURIComponent(name), artistName: decodeURIComponent(artist) }, (err, data) => {
+    console.log(err);
+    if (err) cb({ error: err })
+    else cb(data)
+  })
+}

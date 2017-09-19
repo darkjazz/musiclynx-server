@@ -2,10 +2,8 @@ var request = require('request');
 var uris = require('./uris').uris;
 var qb = require('./query_builder');
 
-const MAX_ARTISTS = 30;
-
-module.exports.get_similar_artists = function(name, cb) {
-  var params = { ARTIST: name, LIMIT: MAX_ARTISTS };
+module.exports.get_similar_artists = function(name, limit, cb) {
+  var params = { ARTIST: name, LIMIT: limit };
   var query = qb.buildQuery("moodplay_artists", params);
   var options = { method: 'GET', uri: uris.mood_uri + "/mood?query=" + encodeURIComponent(query) + "&output=json" };
   request(options, function(err, response, body) {
