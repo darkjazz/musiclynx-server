@@ -46,10 +46,16 @@ module_dbp.get('/get_category_links/:yago_uri/:artist_uri/:limit', function(req,
   });
 });
 
-module_dbp.get('/construct_artist/:mbid/:name', function(req, res) {
-  var mbid = req.params.mbid;
-  var name = req.params.name;
-  dbp.construct_artist(mbid, name, function(artist) {
+module_dbp.get('/describe_artist/:dbpedia_uri', function(req, res) {
+  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  dbp.describe_artist(dbp_uri, function(artist) {
+    res.send(artist);
+  })
+});
+
+module_dbp.get('/construct_artist/:dbpedia_uri', function(req, res) {
+  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  dbp.construct_artist(dbp_uri, function(artist) {
     res.send(artist);
   })
 });

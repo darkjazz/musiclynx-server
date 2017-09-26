@@ -98,25 +98,37 @@ CONSTRUCT {
       dbpo:wikiPageRedirects ?dbpedia_uri ;
       dbpo:about ?about ;
       foaf:name ?name ;
+      dbpo:genre ?genre_uri ;
+      dbpo:associatedMusicalArtist ?assoc_uri ;
       a ?wikicat .
+    ?genre_uri rdfs:label ?genre .
+    ?assoc_uri foaf:name ?assoc .
 }
 WHERE {
   {
-    SELECT ?about ?abstract ?dbpedia_uri ?name ?wikicat WHERE {
+    SELECT ?about ?abstract ?dbpedia_uri ?name ?wikicat ?genre_uri ?genre ?assoc_uri ?assoc WHERE {
       <%URI> dbpo:wikiPageRedirects ?dbpedia_uri .
       ?dbpedia_uri a ?wikicat ;
         foaf:isPrimaryTopicOf ?about ;
         foaf:name ?name ;
+        dbpo:genre ?genre_uri ;
+        dbpo:associatedMusicalArtist ?assoc_uri ;
         dbpo:abstract ?abstract .
+      ?genre_uri rdfs:label ?genre .
+      ?assoc_uri foaf:name ?assoc .
     }
   }
   UNION
   {
-    SELECT ?about ?abstract ?dbpedia_uri ?name ?wikicat WHERE {
+    SELECT ?about ?abstract ?dbpedia_uri ?name ?wikicat ?genre_uri ?genre ?assoc_uri ?assoc WHERE {
       <%URI> a ?wikicat ;
         foaf:isPrimaryTopicOf ?about ;
         foaf:name ?name ;
+        dbpo:genre ?genre_uri ;
+        dbpo:associatedMusicalArtist ?assoc_uri ;
         dbpo:abstract ?abstract .
+      ?genre_uri rdfs:label ?genre .
+      ?assoc_uri foaf:name ?assoc .
       BIND(<%URI> as ?dbpedia_uri)
     }
   }
@@ -124,8 +136,39 @@ WHERE {
   FILTER(REGEX(STR(?wikicat),"http://dbpedia.org/class/yago/Wikicat"))
   FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
   FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatWomen>)
-  FILTER( LANG(?abstract)="en" || LANG(?abstract)="")
+  FILTER( LANG(?abstract)="%LANG" || LANG(?abstract)="")
   FILTER( LANG(?name)="%LANG" || LANG(?name)="" )
+  FILTER( LANG(?genre)="%LANG" || LANG(?genre)="" )
+  FILTER( LANG(?assoc)="%LANG" || LANG(?assoc)="" )
+}
+`
+
+DESCRIBE_ARTIST = `
+DESCRIBE ?uri
+WHERE {
+  {
+    SELECT ?uri ?p ?o WHERE {
+      <%URI> dbpo:wikiPageRedirects ?uri .
+      ?uri ?p ?o .
+    }
+  }
+  UNION
+  {
+    SELECT ?uri ?p ?o WHERE {
+      <%URI> ?p ?o .
+      BIND(<%URI> as ?uri)
+    }
+  }
+  FILTER( LANG(?o)="en" || LANG(?o)="")
+}
+`
+
+ALL_MOODPLAY_ARTISTS = `
+SELECT DISTINCT ?mbid ?name
+WHERE
+{
+ 	?maker mo:musicbrainz_guid ?mbid ;
+    	 foaf:name ?name .
 }
 `
 
@@ -137,5 +180,7 @@ module.exports.queries = {
   "artist_categories": ARTIST_CATEGORIES,
   "wikicat_links": WIKICAT_LINKS,
   "moodplay_artists": MOODPLAY_ARTISTS,
-  "construct_artist": CONSTRUCT_ARTIST
+  "construct_artist": CONSTRUCT_ARTIST,
+  "describe_artist": DESCRIBE_ARTIST,
+  "all_moodplay_artists": ALL_MOODPLAY_ARTISTS
 }

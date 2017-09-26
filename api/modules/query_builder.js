@@ -14,9 +14,11 @@ var appendPrefixes = function(template) {
 }
 
 var replaceParameters = function(query, parameters) {
-  Object.keys(parameters).forEach(function(key){
-    query = query.replace(new RegExp("%" + key, 'g'), parameters[key])
-  })
+  if (parameters) {
+    Object.keys(parameters).forEach(function(key){
+      query = query.replace(new RegExp("%" + key, 'g'), parameters[key])
+    })    
+  }
   return query;
 }
 
