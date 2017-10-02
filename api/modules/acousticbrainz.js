@@ -47,7 +47,8 @@ module.exports.get_similar_artists = function(id, cb) {
 }
 
 module.exports.get_static_similar_artists = function(id, cb) {
-  cb(data[id]);
+  if (id in data) cb(data[id]);
+  else cb({ "status": "artist not found!" });
 }
 
 module.exports.generate_static_content = function(cb) {
