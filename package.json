@@ -128,6 +128,7 @@
     "mime-types": "^2.1.14",
     "min-document": "^2.19.0",
     "ms": "^0.7.3",
+    "n3": "^0.11.2",
     "nan": "^2.5.1",
     "negotiator": "^0.6.1",
     "node-couchdb": "^1.1.1",
