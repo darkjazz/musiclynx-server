@@ -8,7 +8,7 @@ var app = module.exports = express();
 //var ip = process.env.MUSICLYNX_SERVER_PORT || 7757;
 var ip = process.env.PORT || 8080;
 var db_active = false;
-var allow_deploy_api = true;
+var allow_deploy_api = false;
 
 app.use(cors());
 
