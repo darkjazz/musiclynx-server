@@ -26,7 +26,7 @@ module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
   var name = req.params.name;
   sa.find_musicbrainz_id(dbp_uri, name, function(mbid) {
     db.construct_artist(dbp_uri, function(artist) {
-      artist.id = mbid;
+      artist.id = mbid.id;
       artist.name = decodeURIComponent(name);
       artist.dbpedia_uri = dbp_uri;
       res.send(artist);
