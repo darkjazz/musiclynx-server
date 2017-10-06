@@ -47,7 +47,21 @@ module.exports.get_similar_artists = function(id, cb) {
 }
 
 module.exports.get_static_similar_artists = function(id, cb) {
-  if (id in data) cb(data[id]);
+  if (id in data) {
+    var links = data[id];
+    var categories = [];
+    Object.keys(links).forEach(function(element) {
+      var category = {};
+      var artists = [];
+      category.label = "AcousticBrainz similar artists by " + element;
+      links[element].forEach(function(item) {
+        artists.push({ "id": item.id, "name": item.name });
+      });
+      category.artists = artists;
+      categories.push(category);
+    });
+    cb(categories);
+  }
   else cb({ "status": "artist not found!" });
 }
 

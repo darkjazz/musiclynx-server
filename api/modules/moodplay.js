@@ -33,7 +33,12 @@ var get_similar_artists = function(name, limit, cb) {
 module.exports.get_similar_artists = get_similar_artists;
 
 module.exports.get_static_similar_artists = function(id, cb) {
-  if (id in data) cb(data[id].links);
+  if (id in data) {
+    var category = {};
+    category.label = "Moodplay similar artists";
+    category.artists = data[id].links;
+    cb(category);
+  }
   else cb({ "status": "artist not found" });
 }
 

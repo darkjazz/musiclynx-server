@@ -46,12 +46,16 @@ var getCollection = function(s, p, map, store) {
   return array
 }
 
+var getCategoryLabel = function(uri) {
+  return uri.replace("Wikicat", "").split("/").slice(-1)[0].replace(/([A-Z0-9]+)/g, ' $1')
+}
+
 var extractCategories = function(categories) {
   var array = [];
   categories.forEach(function(category) {
     array.push({
       "uri": category,
-      "label": category.replace("Wikicat", "").split("/").slice(-1)[0].replace(/([A-Z0-9]+)/g, ' $1')
+      "label": getCategoryLabel(category)
     });
   });
   return array;
@@ -148,7 +152,15 @@ module.exports.get_category_links = function(yago_uri, artist_uri, limit, cb) {
     .timeout(defaultTimeout)
     .asJson()
     .then(function(r) {
-      cb(r.results.bindings)
+      var category = {};
+      var artists = [];
+      r.forEach(function(row) {
+        artists.push({ dbpedia_uri: row.uri.value, name: row.name.value });
+      });
+      category.uri = yago_uri;
+      category.label = getCategoryLabel(yago_uri);
+      category.artists = artists;
+      cb(category)
     })
     .catch(function(e) { cb(e) });
 }
