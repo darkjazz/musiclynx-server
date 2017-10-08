@@ -111,11 +111,9 @@ WHERE {
       ?dbpedia_uri a ?wikicat ;
         foaf:isPrimaryTopicOf ?about ;
         foaf:name ?name ;
-        dbpo:genre ?genre_uri ;
-        dbpo:associatedMusicalArtist ?assoc_uri ;
         dbpo:abstract ?abstract .
-      ?genre_uri rdfs:label ?genre .
-      ?assoc_uri foaf:name ?assoc .
+      OPTIONAL { <%URI> dbpo:genre ?genre_uri .  ?genre_uri rdfs:label ?genre . }
+      OPTIONAL { <%URI> dbpo:associatedMusicalArtist ?assoc_uri . ?assoc_uri foaf:name ?assoc . }
     }
   }
   UNION
@@ -124,11 +122,9 @@ WHERE {
       <%URI> a ?wikicat ;
         foaf:isPrimaryTopicOf ?about ;
         foaf:name ?name ;
-        dbpo:genre ?genre_uri ;
-        dbpo:associatedMusicalArtist ?assoc_uri ;
         dbpo:abstract ?abstract .
-      ?genre_uri rdfs:label ?genre .
-      ?assoc_uri foaf:name ?assoc .
+      OPTIONAL { <%URI> dbpo:genre ?genre_uri .  ?genre_uri rdfs:label ?genre . }
+      OPTIONAL { <%URI> dbpo:associatedMusicalArtist ?assoc_uri . ?assoc_uri foaf:name ?assoc . }
       BIND(<%URI> as ?dbpedia_uri)
     }
   }
