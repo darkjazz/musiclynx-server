@@ -147,14 +147,16 @@ module.exports.get_category_links = function(yago_uri, artist_uri, limit, cb) {
   var query, params;
   params = { YAGO_URI: yago_uri, ARTIST_URI: artist_uri, LIMIT: limit };
   query = qb.buildQuery("wikicat_links", params);
+  console.log(query);
   dps.client()
     .query(query)
     .timeout(defaultTimeout)
     .asJson()
     .then(function(r) {
+      console.log(r);
       var category = {};
       var artists = [];
-      r.forEach(function(row) {
+      r.results.bindings.forEach(function(row) {
         artists.push({ dbpedia_uri: row.uri.value, name: row.name.value });
       });
       category.uri = yago_uri;
