@@ -16,12 +16,16 @@ var featured = [
   { id: "e795e03d-b5d5-4a5f-834d-162cfb308a2c", name: "PJ Harvey" },
   { id: "ae0b2424-d4c5-4c54-82ac-fe3be5453270", name: "Arvo Pärt" },
   { id: "b6b2bb8d-54a9-491f-9607-7b546023b433", name: "Pixies" },
-  { id: "ca405011-906d-4090-992f-f230739278b1", name: "Dum Dum Girls" },
   { id: "f6f2326f-6b25-4170-b89d-e235b25508e8", name: "Sigur Ros" },
   { id: "52d9bff7-1776-46ae-8e1b-7a76afc73358", name: "Pan Sonic" },
+  { id: "96003ca6-5c03-4771-8b94-dbdc74949125", name: "Angel Haze" },
+  { id: "410c9baf-5469-44f6-9852-826524b80c61", name: "Autechre" },
+  { id: "ca405011-906d-4090-992f-f230739278b1", name: "Dum Dum Girls" },
   { id: "11714cac-2329-4983-9627-c83b0d5475b4", name: "Giacinto Scelsi" },
   { id: "6f5064bb-7dbb-4a44-bac5-04c467394817", name: "Fatoumata Diawara" },
-  { id: "96003ca6-5c03-4771-8b94-dbdc74949125", name: "Angel Haze" }
+  { id: "07b6020a-c539-4d68-aeef-f159f3befc76", name: "Band of Horses" },
+  { id: "62c31c9d-d2d9-4b2a-9549-4be129e9559a", name: "Pauline Oliveros" },
+  { id: "2674597f-6c40-47cc-b980-67f94725f7a7", name: "Najwa Karam" }
 ];
 
 module_mls.get('/get_featured_artists', function(req, res) {
