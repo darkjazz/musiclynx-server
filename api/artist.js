@@ -25,7 +25,9 @@ var featured = [
   { id: "6f5064bb-7dbb-4a44-bac5-04c467394817", name: "Fatoumata Diawara" },
   { id: "07b6020a-c539-4d68-aeef-f159f3befc76", name: "Band of Horses" },
   { id: "62c31c9d-d2d9-4b2a-9549-4be129e9559a", name: "Pauline Oliveros" },
-  { id: "2674597f-6c40-47cc-b980-67f94725f7a7", name: "Najwa Karam" }
+  { id: "2674597f-6c40-47cc-b980-67f94725f7a7", name: "Najwa Karam" },
+  { id: "2841d983-f8c3-432a-af02-7407a84580a8", name: "Merzbow" },
+  { id: "2013f3af-51a3-404d-9afc-91b3f277ea4e", name: "Oumou Sangaré" }
 ];
 
 module_mls.get('/get_featured_artists', function(req, res) {
