@@ -47,7 +47,7 @@ var getCollection = function(s, p, map, store) {
 }
 
 var getCategoryLabel = function(uri) {
-  return uri.replace("Wikicat", "").split("/").slice(-1)[0].replace(/([A-Z0-9]+)/g, ' $1')
+  return "Other" + uri.replace("Wikicat", "").split("/").slice(-1)[0].replace(/([A-Z0-9]+)/g, ' $1')
 }
 
 var extractCategories = function(categories) {
