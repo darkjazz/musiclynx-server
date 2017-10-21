@@ -3,7 +3,7 @@ var jsonfile = require('jsonfile');
 var uris = require('./uris').uris
 
 const couch = new Couch();
-const dbName = "js_div_db";
+const dbName = "js_div_db_20000";
 const max_links = 30;
 const max_static_links = 13;
 
@@ -68,7 +68,7 @@ module.exports.get_static_similar_artists = function(id, cb) {
 module.exports.generate_static_content = function(cb) {
   couch.get(dbName, '_design/views/_view/all_by_mbid').then((result) => {
     var db = {}
-    var remap = { "Rhythm": "rhythm", "Tonal": "tonality", "Timbral": "timbre" };
+    var remap = { "Rhythm": "rhythm", "Tonality": "tonality", "Timbre": "timbre" };
     result.data.rows.forEach(function(row) {
       if (!(row.key in db)) {
         db[row.key] = {

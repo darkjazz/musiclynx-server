@@ -6,6 +6,7 @@ var uris = require('./uris').uris;
 var sameas = require('./sameas');
 var n3 = require('n3');
 var p = require('./prefixes');
+var wd = require('./wikidata')
 // var ldf = require('ldf-client');
 
 var defaultTimeout = 8000;
@@ -61,11 +62,19 @@ var extractCategories = function(categories) {
   return array;
 }
 
+var getImageUri = function(dbpedia_uri, store) {
+  var depiction = getSingle(dbpedia_uri, 'foaf:depiction', null, store);
+  var image = ""
+  if (depiction) {
+    image = wd.getImageUri()
+  }
+}
+
 module.exports.get_artist_abstract = function(mbid, name, cb) {
   sameas.find_dbpedia_link(mbid, name, function(body) {
     var query, params;
     var dbpedia_uri = body;
-    console.log(dbpedia_uri);
+    // console.log(dbpedia_uri);
     params = { URI: dbpedia_uri, LANG: "en" };
     query = qb.buildQuery("artist_abstract", params);
     dps.client()
@@ -88,7 +97,7 @@ module.exports.get_artist_abstract = function(mbid, name, cb) {
 
 
 module.exports.get_artist_abstract_directly = function(dbpedia_uri, cb) {
-  console.log(dbpedia_uri);
+  // console.log(dbpedia_uri);
   params = { URI: dbpedia_uri, LANG: "en" };
   query = qb.buildQuery("artist_abstract", params);
   dps.client()
@@ -132,7 +141,7 @@ module.exports.get_categories = function(dbpedia_uri, cb) {
   var query, params;
   params = { URI: dbpedia_uri };
   query = qb.buildQuery("artist_categories", params);
-  console.log(query);
+  // console.log(query);
   dps.client()
     .query(query)
     .timeout(defaultTimeout)
@@ -147,13 +156,13 @@ module.exports.get_category_links = function(yago_uri, artist_uri, limit, cb) {
   var query, params;
   params = { YAGO_URI: yago_uri, ARTIST_URI: artist_uri, LIMIT: limit };
   query = qb.buildQuery("wikicat_links", params);
-  console.log(query);
+  // console.log(query);
   dps.client()
     .query(query)
     .timeout(defaultTimeout)
     .asJson()
     .then(function(r) {
-      console.log(r);
+      // console.log(r);
       var category = {};
       var artists = [];
       r.results.bindings.forEach(function(row) {
@@ -184,6 +193,7 @@ module.exports.construct_artist = function(dbpedia_uri, cb) {
         artist["abstract"] = getSingle(dbpedia_uri, 'dbpo:abstract', null, store);
         artist["name"] = getSingle(dbpedia_uri, 'foaf:name', null, store);
         artist["wikipedia_uri"] = getSingle(dbpedia_uri, 'dbpo:about', null, store);
+        //artist["image"] = getImageUri(dbpedia_uri, store);
         artist["categories"] = extractCategories(getCollection(dbpedia_uri, 'rdf:type', null, store));
         artist["genres"] = getCollection(dbpedia_uri, 'dbpo:genre', { "rdfs:label": "label" }, store);
         artist["associated_artists"] = { "label": "Associated Artists", "artists": getCollection(dbpedia_uri, 'dbpo:associatedMusicalArtist', { "foaf:name": "name" }, store) };

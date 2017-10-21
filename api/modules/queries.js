@@ -100,13 +100,15 @@ CONSTRUCT {
       foaf:name ?name ;
       dbpo:genre ?genre_uri ;
       dbpo:associatedMusicalArtist ?assoc_uri ;
+      foaf:depiction ?image ;
+      dbpo:thumbnail ?thumbnail ;
       a ?wikicat .
     ?genre_uri rdfs:label ?genre .
     ?assoc_uri foaf:name ?assoc .
 }
 WHERE {
   {
-    SELECT ?about ?abstract ?dbpedia_uri ?name ?wikicat ?genre_uri ?genre ?assoc_uri ?assoc WHERE {
+    SELECT ?about ?abstract ?dbpedia_uri ?name ?wikicat ?genre_uri ?genre ?assoc_uri ?assoc ?image ?thumbnail WHERE {
       <%URI> dbpo:wikiPageRedirects ?dbpedia_uri .
       ?dbpedia_uri a ?wikicat ;
         foaf:isPrimaryTopicOf ?about ;
@@ -114,17 +116,21 @@ WHERE {
         dbpo:abstract ?abstract .
       OPTIONAL { <%URI> dbpo:genre ?genre_uri .  ?genre_uri rdfs:label ?genre . }
       OPTIONAL { <%URI> dbpo:associatedMusicalArtist ?assoc_uri . ?assoc_uri foaf:name ?assoc . }
+      OPTIONAL { <%URI> foaf:depiction ?image . }
+      OPTIONAL { <%URI> dbpo:thumbnail ?thumbnail . }
     }
   }
   UNION
   {
-    SELECT ?about ?abstract ?dbpedia_uri ?name ?wikicat ?genre_uri ?genre ?assoc_uri ?assoc WHERE {
+    SELECT ?about ?abstract ?dbpedia_uri ?name ?wikicat ?genre_uri ?genre ?assoc_uri ?assoc ?image ?thumbnail WHERE {
       <%URI> a ?wikicat ;
         foaf:isPrimaryTopicOf ?about ;
         foaf:name ?name ;
         dbpo:abstract ?abstract .
       OPTIONAL { <%URI> dbpo:genre ?genre_uri .  ?genre_uri rdfs:label ?genre . }
       OPTIONAL { <%URI> dbpo:associatedMusicalArtist ?assoc_uri . ?assoc_uri foaf:name ?assoc . }
+      OPTIONAL { <%URI> foaf:depiction ?image . }
+      OPTIONAL { <%URI> dbpo:thumbnail ?thumbnail . }
       BIND(<%URI> as ?dbpedia_uri)
     }
   }
