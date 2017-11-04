@@ -1,6 +1,18 @@
 var request = require('request');
 var uris = require('./uris').uris;
 
+module.exports.get_artist_id = function(term, cb) {
+  var query = "?q=" + term + "&output=json";
+  request({ method: 'GET', uri: uris.deezer_uri + query }, function(err, response, body)
+  {
+    var json = JSON.parse(body);
+    if (json.data && json.data.length > 0 && json.data[0].id)
+      cb({ "id": json.data[0].id });
+    else
+      cb({ "status": "not found" });
+  })
+}
+
 module.exports.get_deezer_playlist = function(term, cb) {
   var query = "?q=" + term + "&output=json";
   request({ method: 'GET', uri: uris.deezer_uri + query }, function(err, response, body)
