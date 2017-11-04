@@ -30,6 +30,14 @@ var featured = [
   { id: "2013f3af-51a3-404d-9afc-91b3f277ea4e", name: "Oumou Sangaré" }
 ];
 
+var artistIsFeatured = function(id) {
+  var isFeatured = false;
+  featured.forEach(function(artist) {
+    if (artist.id == id) isFeatured = true;
+  })
+  return isFeatured;
+}
+
 module_mls.get('/get_featured_artists', function(req, res) {
   res.send(featured);
 });
@@ -42,6 +50,8 @@ module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
       artist.id = mbid;
       artist.name = decodeURIComponent(name);
       artist.dbpedia_uri = dbp_uri;
+      if (artistIsFeatured(artist.id))
+        artist.image = './assets/featured/' + artist.id + '.jpg';
       res.send(artist);
     })
   });
@@ -55,6 +65,8 @@ module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
       artist.id = mbid.id;
       artist.name = decodeURIComponent(name);
       artist.dbpedia_uri = dbp_uri;
+      if (artistIsFeatured(artist.id))
+        artist.image = './assets/featured/' + artist.id + '.jpg';
       res.send(artist);
     });
   })
