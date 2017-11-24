@@ -203,6 +203,28 @@ module.exports.construct_artist = function(dbpedia_uri, cb) {
     .catch(function(e) { cb(e) });
 }
 
+module.exports.get_all_linked_artists = function(dbpedia_uri, cb) {
+  var params = { URI: dbpedia_uri }
+  var query = qb.buildQuery("all_linked_artists", params);
+  dps.client()
+    .query(query)
+    .timeout(defaultTimeout)
+    .asJson()
+    .then(function(r) {
+      var artists = [];
+      r.results.bindings.forEach(function(row) {
+        artists.push({
+          dbpedia_uri: row.uri.value,
+          name: row.artist.value,
+          count_common: row.common.value,
+          common_categories: row.uris.value.split("; ")
+        });
+      });
+      cb(artists);
+    })
+    .catch(function(e) { cb(e) });
+}
+
 /*
 module.exports.describe_artist = function(dbpedia_uri, cb) {
   var query, params;

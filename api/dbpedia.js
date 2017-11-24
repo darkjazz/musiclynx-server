@@ -60,4 +60,11 @@ module_dbp.get('/construct_artist/:dbpedia_uri', function(req, res) {
   })
 });
 
+module_dbp.get('/get_all_linked_artists/:dbpedia_uri', function(req, res) {
+  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  dbp.get_all_linked_artists(dbp_uri, function(artists) {
+    res.send(artists);
+  })
+});
+
 module.exports = module_dbp;

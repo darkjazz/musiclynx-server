@@ -47,6 +47,22 @@ FILTER(?yago != <http://dbpedia.org/class/yago/WikicatWomen>)
 }
 `;
 
+const ALL_LINKED_ARTISTS = `
+SELECT DISTINCT ?uri MIN(?name) as ?artist COUNT(DISTINCT ?wikicat) as ?common group_concat(distinct ?wikicat;separator="; ") as ?uris WHERE {
+ 	<%URI> a ?wikicat .
+	?uri a ?wikicat, ?type ;
+   		foaf:name ?name .
+   	VALUES ?type {
+   		dbpo:Band dbpo:MusicArtist dbp-yago:Composer109947232 yago:Musician110340312
+   	}
+ 	FILTER (LANG(?name)="en" || LANG(?name)="" )
+   	FILTER(REGEX(STR(?wikicat),"http://dbpedia.org/class/yago/Wikicat"))
+  	FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
+  	FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatWomen>)
+ 	FILTER (?uri != <%URI>)
+} GROUP BY ?uri ORDER BY DESC(?common)
+`
+
 const WIKICAT_LINKS = `
 SELECT DISTINCT ?uri ?name WHERE {
  ?uri a <%YAGO_URI> ;
@@ -184,5 +200,6 @@ module.exports.queries = {
   "moodplay_artists": MOODPLAY_ARTISTS,
   "construct_artist": CONSTRUCT_ARTIST,
   "describe_artist": DESCRIBE_ARTIST,
-  "all_moodplay_artists": ALL_MOODPLAY_ARTISTS
+  "all_moodplay_artists": ALL_MOODPLAY_ARTISTS,
+  "all_linked_artists": ALL_LINKED_ARTISTS
 }
