@@ -212,12 +212,14 @@ module.exports.get_all_linked_artists = function(dbpedia_uri, cb) {
     .asJson()
     .then(function(r) {
       var artists = [];
+      // console.log(r.results.bindings);
       r.results.bindings.forEach(function(row) {
         artists.push({
           dbpedia_uri: row.uri.value,
-          name: row.artist.value,
+          name: row.name.value,
           count_common: row.common.value,
-          common_categories: row.uris.value.split("; ")
+          degree: row.degree.value,
+          common_categories: extractCategories(row.categories.value.split("; "))
         });
       });
       cb(artists);
