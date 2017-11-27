@@ -12,8 +12,10 @@ module.exports.make_graph = function(artists, categories, name, min_ranking) {
   Object.keys(categories).forEach(function(category) {
     var names = categories[category].slice(1);
     categories[category].map(function(name) {
-      graph["links"].push({ "source": name, "target": names[0], "value": 1 });
-      names = names.slice(1);
+      if (names.length > 0) {
+        graph["links"].push({ "source": name, "target": names[0], "value": 1 });
+        names = names.slice(1);
+      }
     });
   });
   return graph;
