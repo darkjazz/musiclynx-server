@@ -6,7 +6,9 @@ var uris = require('./uris').uris;
 var sameas = require('./sameas');
 var n3 = require('n3');
 var p = require('./prefixes');
-var wd = require('./wikidata')
+var wd = require('./wikidata');
+var fi = require('./filter');
+var gr = require('./graph');
 // var ldf = require('ldf-client');
 
 var defaultTimeout = 8000;
@@ -203,7 +205,7 @@ module.exports.construct_artist = function(dbpedia_uri, cb) {
     .catch(function(e) { cb(e) });
 }
 
-module.exports.get_all_linked_artists = function(dbpedia_uri, cb) {
+module.exports.get_all_linked_artists = function(dbpedia_uri, degree, type, cb) {
   var params = { URI: dbpedia_uri }
   var query = qb.buildQuery("all_linked_artists", params);
   dps.client()
@@ -212,21 +214,68 @@ module.exports.get_all_linked_artists = function(dbpedia_uri, cb) {
     .asJson()
     .then(function(r) {
       var artists = [];
-      // console.log(r.results.bindings);
       r.results.bindings.forEach(function(row) {
         artists.push({
           dbpedia_uri: row.uri.value,
           name: row.name.value,
-          count_common: row.common.value,
+          ranking: row.common.value,
           degree: row.degree.value,
           common_categories: extractCategories(row.categories.value.split("; "))
         });
       });
+      switch (type) {
+        case "0":
+          artists = fi.jaccard(artists, degree);
+          break;
+        case "1":
+          artists = fi.collaborative(artists, degree);
+          break;
+        case "2":
+          artists = fi.sorensen(artists, degree);
+          break;
+        default:
+          artists = fi.collaborative(artists, degree);
+      }
       cb(artists);
     })
     .catch(function(e) { cb(e) });
 }
 
+module.exports.get_artist_graph = function(dbpedia_uri, name, min_ranking, cb) {
+  var params = { URI: dbpedia_uri }
+  var query = qb.buildQuery("all_linked_artists", params);
+  dps.client()
+    .query(query)
+    .timeout(defaultTimeout)
+    .asJson()
+    .then(function(r) {
+      var artists = [];
+      var categories = {};
+      r.results.bindings.forEach(function(row) {
+        var common_categories = extractCategories(row.categories.value.split("; "));
+        artists.push({
+          dbpedia_uri: row.uri.value,
+          name: row.name.value,
+          ranking: row.common.value,
+          degree: row.degree.value,
+          common_categories: common_categories
+        });
+        if (row.common.value >= min_ranking) {
+          common_categories.forEach(function(category) {
+            if (!(category.label in categories)) {
+              categories[category.label] = [ row.name.value ]
+            }
+            else {
+              categories[category.label].push( row.name.value )
+            }
+          });
+        }
+      });
+      var graph = gr.make_graph(artists, categories, name, min_ranking);
+      cb(graph);
+    })
+    .catch(function(e) { cb(e) });
+}
 /*
 module.exports.describe_artist = function(dbpedia_uri, cb) {
   var query, params;
