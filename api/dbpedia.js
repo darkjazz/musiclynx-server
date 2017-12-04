@@ -60,19 +60,10 @@ module_dbp.get('/construct_artist/:dbpedia_uri', function(req, res) {
   })
 });
 
-module_dbp.get('/get_all_linked_artists/:dbpedia_uri/:degree/:type', function(req, res) {
+module_dbp.get('/get_all_linked_artists/:dbpedia_uri', function(req, res) {
   var dbp_uri = b64.decode(req.params.dbpedia_uri);
   dbp.get_all_linked_artists(dbp_uri, req.params.degree, req.params.type, function(artists) {
     res.send(artists);
-  })
-});
-
-module_dbp.get('/get_artist_graph/:dbpedia_uri/:name/:min_ranking', function(req, res) {
-  var dbp_uri = b64.decode(req.params.dbpedia_uri);
-  var name = req.params.name;
-  var min_ranking = parseInt(req.params.min_ranking);
-  dbp.get_artist_graph(dbp_uri, name, min_ranking, function(graph) {
-    res.send(graph);
   })
 });
 

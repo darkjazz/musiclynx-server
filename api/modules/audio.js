@@ -2,7 +2,7 @@ var request = require('request');
 var uris = require('./uris').uris;
 
 module.exports.get_artist_id = function(term, cb) {
-  var query = "?q=" + term + "&output=json";
+  var query = "?q=" + encodeURIComponent(term) + "&output=json";
   request({ method: 'GET', uri: uris.deezer_uri + query }, function(err, response, body)
   {
     var json = JSON.parse(body);

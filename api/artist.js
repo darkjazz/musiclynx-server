@@ -5,6 +5,7 @@ var mb = require('./modules/musicbrainz');
 var sa = require('./modules/sameas');
 var ab = require('./modules/acousticbrainz');
 var mp = require('./modules/moodplay');
+var gr = require('./modules/graph');
 
 var module_mls = express.Router();
 
@@ -83,6 +84,18 @@ module_mls.get('/get_moodplay_artists/:mbid', function(req, res) {
   var mbid = req.params.mbid;
   mp.get_static_similar_artists(mbid, function(data) {
     res.send(data);
+  })
+});
+
+module_mls.get('/get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree', function(req, res) {
+  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  var name = req.params.name;
+  var id = req.params.id;
+  var limit = parseInt(req.params.limit);
+  var filter = parseInt(req.params.filter);
+  var degree = parseInt(req.params.degree);
+  gr.get_artist_graph(dbp_uri, name, id, limit, filter, degree, graph => {
+    res.send(graph);
   })
 });
 

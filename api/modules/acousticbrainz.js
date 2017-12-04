@@ -15,6 +15,12 @@ jsonfile.readFile(uris.static_db_dir + uris.ab_static_db + '.json', function(err
   console.log("Acousticbrainz static data loaded!");
 });
 
+var categoryName = function(feature) { return "AcousticBrainz similar artists by " + feature; }
+
+module.exports.get_category_name = function(feature) {
+  return category_name(feature);
+}
+
 module.exports.get_artist = function(id, cb) {
   couch.get(dbName, '_design/views/_view/id_exists', { key: id, group: true }).then((cdbr) => {
     cb(cdbr);
@@ -53,7 +59,7 @@ module.exports.get_static_similar_artists = function(id, cb) {
     Object.keys(links).forEach(function(element) {
       var category = {};
       var artists = [];
-      category.label = "AcousticBrainz similar artists by " + element;
+      category.label = categoryName(element);
       links[element].forEach(function(item) {
         artists.push({ "id": item.id, "name": item.name });
       });

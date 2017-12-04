@@ -205,7 +205,7 @@ module.exports.construct_artist = function(dbpedia_uri, cb) {
     .catch(function(e) { cb(e) });
 }
 
-module.exports.get_all_linked_artists = function(dbpedia_uri, degree, type, cb) {
+module.exports.get_all_linked_artists = function(dbpedia_uri, cb) {
   var params = { URI: dbpedia_uri }
   var query = qb.buildQuery("all_linked_artists", params);
   dps.client()
@@ -223,95 +223,7 @@ module.exports.get_all_linked_artists = function(dbpedia_uri, degree, type, cb) 
           common_categories: extractCategories(row.categories.value.split("; "))
         });
       });
-      switch (type) {
-        case "0":
-          artists = fi.jaccard(artists, degree);
-          break;
-        case "1":
-          artists = fi.collaborative(artists, degree);
-          break;
-        case "2":
-          artists = fi.sorensen(artists, degree);
-          break;
-        default:
-          artists = fi.collaborative(artists, degree);
-      }
       cb(artists);
     })
     .catch(function(e) { cb(e) });
 }
-
-module.exports.get_artist_graph = function(dbpedia_uri, name, min_ranking, cb) {
-  var params = { URI: dbpedia_uri }
-  var query = qb.buildQuery("all_linked_artists", params);
-  dps.client()
-    .query(query)
-    .timeout(defaultTimeout)
-    .asJson()
-    .then(function(r) {
-      var artists = [];
-      var categories = {};
-      r.results.bindings.forEach(function(row) {
-        var common_categories = extractCategories(row.categories.value.split("; "));
-        artists.push({
-          dbpedia_uri: row.uri.value,
-          name: row.name.value,
-          ranking: row.common.value,
-          degree: row.degree.value,
-          common_categories: common_categories
-        });
-        if (row.common.value >= min_ranking) {
-          common_categories.forEach(function(category) {
-            if (!(category.label in categories)) {
-              categories[category.label] = [ row.name.value ]
-            }
-            else {
-              categories[category.label].push( row.name.value )
-            }
-          });
-        }
-      });
-      var graph = gr.make_graph(artists, categories, name, min_ranking);
-      cb(graph);
-    })
-    .catch(function(e) { cb(e) });
-}
-/*
-module.exports.describe_artist = function(dbpedia_uri, cb) {
-  var query, params;
-  params = { URI: dbpedia_uri };
-  query = qb.buildQuery("describe_artist", params);
-  dps.client()
-    .query(query)
-    .timeout(defaultTimeout)
-    .asJson()
-    .then(function(r) {
-      console.log("Creating a store");
-      var store = n3.Store();
-      r.results.bindings.forEach(function(triple) {
-        if (triple.s.value == dbpedia_uri && (!triple.o.lang || triple.o.lang == "en")) {
-          store.addTriple(triple.s.value, triple.p.value, triple.o.value);
-        }
-      });
-      artist = { "dbpedia_uri": dbpedia_uri };
-      store.getTriples(dbpedia_uri, 'http://dbpedia.org/ontology/abstract', null).forEach(function(trpl) {
-        artist["abstract"] = trpl.object
-      });
-      artist.genre = {};
-      store.getTriples(dbpedia_uri, 'http://dbpedia.org/ontology/genre', null).forEach(function(trpl) {
-        artist["genre"].push(trpl.object);
-      });
-      artist.categories = [];
-      cb(artist);
-    })
-    .catch(function(e) { cb(e) })
-}
-*/
-
-// var qs = { query: query, timeout: defaultTimeout, format: "text" };
-// var frag_uri = DBP_URI+'?'+Object.keys(qs).map(key => `${key}=${encodeURIComponent(qs[key])}`).join('&');
-// var fragmentsClient = new ldf.FragmentsClient(frag_uri);
-// query = 'SELECT ?abs WHERE { <%URI> <http://dbpedia.org/ontology/abstract> ?abs . }'.replace("%URI", dbpedia_uri);
-// console.log("QUERY: " + query);
-// var results = new ldf.SparqlIterator(query, { fragmentsClient: fragmentsClient });
-//results.on('data', function (result) { console.log(result); });
