@@ -66,6 +66,19 @@ SELECT DISTINCT ?dbpedia_uri ?name WHERE {
 }
 `;
 
+const CATEGORY_DEGREES = `
+SELECT ?wikicat COUNT(DISTINCT ?name) as ?degree WHERE {
+	<%URI> a ?wikicat .
+  ?uri a ?wikicat, ?type ;
+      foaf:name ?name .
+    VALUES ?type {
+      dbpo:Band dbpo:MusicArtist dbp-yago:Composer109947232 yago:Musician110340312
+    }
+	FILTER(REGEX(STR(?wikicat),"http://dbpedia.org/class/yago/Wikicat"))
+  	FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
+  	FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatWomen>)
+} GROUP BY ?wikicat ORDER BY ?degree
+`;
 
 const CONSTRUCT_ARTIST = `
 CONSTRUCT {
@@ -200,6 +213,7 @@ module.exports.queries = {
   "artist_abstract": ARTIST_ABSTRACT,
   "artist_categories": ARTIST_CATEGORIES,
   "associated_artists": ASSOCIATED_ARTISTS,
+  "category_degrees": CATEGORY_DEGREES,
   "construct_artist": CONSTRUCT_ARTIST,
   "describe_artist": DESCRIBE_ARTIST,
   "image_by_mbid": IMAGE_BY_MBID,

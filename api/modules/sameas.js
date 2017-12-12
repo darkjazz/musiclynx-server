@@ -74,7 +74,6 @@ module.exports.find_musicbrainz_id = function(artist_uri, name, cb) {
       else {
         mb.artist_search(name, function(body) {
           var json = JSON.parse(body);
-          console.log(json);
           if (json["artists"].length > 0 && json["artists"][0].score == 100) {
             var artist = {
               id: json["artists"][0].id,
