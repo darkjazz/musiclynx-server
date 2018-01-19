@@ -87,6 +87,20 @@ module_mls.get('/get_moodplay_artists/:mbid', function(req, res) {
   })
 });
 
+module_mls.get('/get_artists/:dbpedia_uri/:name/:id/:limit/:filter/:degree/:lambda', function(req, res) {
+  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  var name = req.params.name;
+  var id = req.params.id;
+  var limit = parseInt(req.params.limit);
+  var filter = parseInt(req.params.filter);
+  var degree = parseInt(req.params.degree);
+  var lambda = parseInt(req.params.lambda);
+  gr.get_artists(dbp_uri, name, id, limit, filter, degree, lambda, artists => {
+    res.send(artists);
+  })
+});
+
+
 module_mls.get('/get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree', function(req, res) {
   var dbp_uri = b64.decode(req.params.dbpedia_uri);
   var name = req.params.name;

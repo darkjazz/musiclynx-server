@@ -2,19 +2,19 @@ const ALL_LINKED_ARTISTS = `
 SELECT DISTINCT ?uri MIN(?n) as ?name COUNT(DISTINCT ?wikicatA) as ?common COUNT(DISTINCT ?wikicatB) as ?degree group_concat(distinct ?wikicatA;separator="; ") as ?categories WHERE {
  	<%URI> a ?wikicatA .
 	?uri a ?wikicatA, ?wikicatB, ?type ;
-   		foaf:name ?n .
-   	VALUES ?type {
-   		dbpo:Band dbpo:MusicArtist dbp-yago:Composer109947232 yago:Musician110340312
-   	}
-   	FILTER(REGEX(STR(?wikicatA),"http://dbpedia.org/class/yago/Wikicat"))
-  	FILTER(?wikicatA != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
-  	FILTER(?wikicatA != <http://dbpedia.org/class/yago/WikicatWomen>)
-   	FILTER(REGEX(STR(?wikicatB),"http://dbpedia.org/class/yago/Wikicat"))
-  	FILTER(?wikicatB != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
-  	FILTER(?wikicatB != <http://dbpedia.org/class/yago/WikicatWomen>)
- 	FILTER (LANG(?n)="en" || LANG(?n)="" )
- 	FILTER (?uri != <%URI>)
-} GROUP BY ?uri ORDER BY DESC(?common)
+   	foaf:name ?n .
+ 	VALUES ?type {
+ 		dbpo:Band dbpo:MusicArtist dbp-yago:Composer109947232 yago:Musician110340312
+ 	}
+ 	FILTER(REGEX(STR(?wikicatA),"http://dbpedia.org/class/yago/Wikicat"))
+	FILTER(?wikicatA != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
+	FILTER(?wikicatA != <http://dbpedia.org/class/yago/WikicatWomen>)
+ 	FILTER(REGEX(STR(?wikicatB),"http://dbpedia.org/class/yago/Wikicat"))
+	FILTER(?wikicatB != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
+	FILTER(?wikicatB != <http://dbpedia.org/class/yago/WikicatWomen>)
+  FILTER (LANG(?n)="en" || LANG(?n)="" )
+  FILTER (?uri != <%URI>)
+} GROUP BY ?uri ORDER BY DESC(?common) ASC(?degree)
 `;
 
 const ALL_MOODPLAY_ARTISTS = `
@@ -55,6 +55,13 @@ FILTER(?yago != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
 FILTER(?yago != <http://dbpedia.org/class/yago/WikicatWomen>)
 }
 `;
+
+const ARTIST_REDIRECT = `
+SELECT ?dbpedia_uri ?redirected_uri WHERE {
+  <%URI> dbpo:wikiPageRedirects ?dbpedia_uri .
+  BIND(<%URI> as ?redirected_uri)
+}
+`
 
 const ASSOCIATED_ARTISTS = `
 SELECT DISTINCT ?dbpedia_uri ?name WHERE {
@@ -212,6 +219,7 @@ module.exports.queries = {
   "all_moodplay_artists": ALL_MOODPLAY_ARTISTS,
   "artist_abstract": ARTIST_ABSTRACT,
   "artist_categories": ARTIST_CATEGORIES,
+  "artist_redirect": ARTIST_REDIRECT,
   "associated_artists": ASSOCIATED_ARTISTS,
   "category_degrees": CATEGORY_DEGREES,
   "construct_artist": CONSTRUCT_ARTIST,

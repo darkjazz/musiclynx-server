@@ -132,39 +132,58 @@ var groupArtists = function(artists, categories, graph) {
   return graph;
 }
 
-module.exports.get_artist_graph = function(dbpedia_uri, name, id, limit, filter, degree, cb) {
+module.exports.get_artists = function(dbpedia_uri, name, id, limit, filter, degree, lambda, cb) {
   dbp.get_all_linked_artists(dbpedia_uri, artists => {
     dbp.get_category_degrees(dbpedia_uri, category_degrees => {
       if (artists.length > 0) {
-        artists = fi.apply_filter(filter, artists, category_degrees, degree, limit);
-        categories = collectCategories(artists, category_degrees);
-        artists = addAcousticBrainzLinks(id, artists);
-        categories = addAcousticBrainzCategories(id, categories);
-        artists = addMoodplayLinks(id, artists);
-        categories = addMoodplayCategories(id, categories);
-        graph = groupArtists(artists, categories);
-        Object.keys(categories).forEach(function(category) {
-          if (category !== 'undefined') {
-            var artists = categories[category].artists.slice(1);
-            categories[category].artists.map(function(artist) {
-              if (artists.length > 0) {
-                graph["links"].push({ "source": artist.name, "target": artists[0].name, "value": 1 });
-                if (category.indexOf("AcousticBrainz") >= 0) {
-                  linkAcousticBrainzArtists(artist, category, artists, graph);
-                }
-                if (category.indexOf("Moodplay") >= 0) {
-                  linkMoodplayArtists(artist, artists, graph);
-                }
-                artists = artists.slice(1);
-              }
-            });
-          }
-        });
-        cb(graph);
+        artists = fi.apply_filter(filter, artists, category_degrees, degree, lambda, limit);
+        cb(artists.map(artist => { delete artist["common_categories"]; return artist }))
       }
       else {
         cb({"error": "no linked artists found"});
       }
+    })
+  })
+}
+
+module.exports.get_artist_graph = function(dbpedia_uri, name, id, limit, filter, degree, cb) {
+  dbp.get_artist_redirect(dbpedia_uri, redirect => {
+    if (redirect.length > 0) {
+      dbpedia_uri = redirect[0]["dbpedia_uri"]["value"];
+    }
+    dbp.get_all_linked_artists(dbpedia_uri, artists => {
+      dbp.get_category_degrees(dbpedia_uri, category_degrees => {
+        if (artists.length > 0) {
+          artists = fi.apply_filter(filter, artists, category_degrees, degree, 1.0, limit);
+          categories = collectCategories(artists, category_degrees);
+          artists = addAcousticBrainzLinks(id, artists);
+          categories = addAcousticBrainzCategories(id, categories);
+          artists = addMoodplayLinks(id, artists);
+          categories = addMoodplayCategories(id, categories);
+          graph = groupArtists(artists, categories);
+          Object.keys(categories).forEach(function(category) {
+            if (category !== 'undefined') {
+              var artists = categories[category].artists.slice(1);
+              categories[category].artists.map(function(artist) {
+                if (artists.length > 0) {
+                  graph["links"].push({ "source": artist.name, "target": artists[0].name, "value": 1 });
+                  if (category.indexOf("AcousticBrainz") >= 0) {
+                    linkAcousticBrainzArtists(artist, category, artists, graph);
+                  }
+                  if (category.indexOf("Moodplay") >= 0) {
+                    linkMoodplayArtists(artist, artists, graph);
+                  }
+                  artists = artists.slice(1);
+                }
+              });
+            }
+          });
+          cb(graph);
+        }
+        else {
+          cb({"error": "no linked artists found"});
+        }
+      });
     });
-  });
+  })
 }

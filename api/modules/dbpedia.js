@@ -229,7 +229,7 @@ module.exports.get_all_linked_artists = function(dbpedia_uri, cb) {
 }
 
 module.exports.get_category_degrees = function(dbpedia_uri, cb) {
-  var param = { URI: dbpedia_uri }
+  var param = { URI: dbpedia_uri };
   var query = qb.buildQuery("category_degrees", param);
   dps.client()
     .query(query)
@@ -241,6 +241,19 @@ module.exports.get_category_degrees = function(dbpedia_uri, cb) {
         categories[row.wikicat.value] = row.degree.value;
       });
       cb(categories);
+    })
+    .catch(function(e) { cb(e) });
+}
+
+module.exports.get_artist_redirect = function(dbpedia_uri, cb) {
+  var param = { URI: dbpedia_uri };
+  var query = qb.buildQuery("artist_redirect", param);
+  dps.client()
+    .query(query)
+    .timeout(defaultTimeout)
+    .asJson()
+    .then(function(r) {
+      cb(r.results.bindings)
     })
     .catch(function(e) { cb(e) });
 }

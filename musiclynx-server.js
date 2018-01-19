@@ -20,7 +20,6 @@ if (db_active) {
   app.use('/acousticbrainz', require('./api/acousticbrainz'));
   app.use('/moodplay', require('./api/moodplay'));
   app.use('/youtube', require('./api/youtube'));
-  app.use('/lastfm', require('./api/lastfm'));
 }
 
 app.use('/artist', require('./api/artist'));
@@ -29,6 +28,7 @@ app.use('/dbpedia', require('./api/dbpedia'));
 app.use('/wikidata', require('./api/wikidata'));
 app.use('/sameas', require('./api/sameas'));
 app.use('/audio', require('./api/audio'));
+app.use('/lastfm', require('./api/lastfm'));
 
 if (allow_deploy_api) app.use('/data', require('./api/data'));
 

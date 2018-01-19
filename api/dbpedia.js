@@ -74,4 +74,11 @@ module_dbp.get('/get_category_degrees/:dbpedia_uri', function(req, res) {
   })
 });
 
+module_dbp.get('/get_artist_redirect/:dbpedia_uri', function(req, res) {
+  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  dbp.get_artist_redirect(dbp_uri, function(redirect) {
+    res.send(redirect);
+  })
+});
+
 module.exports = module_dbp;

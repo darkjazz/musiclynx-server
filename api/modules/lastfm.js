@@ -1,7 +1,12 @@
 var LastFM = require('last-fm');
-var lastfm = new LastFM(process.env.LASTFM_API_KEY, { userAgent: process.env.LASTFM_USER_AGENT });
 
-const MAX_ARTISTS = 30;
+LASTFM_API_KEY="4ece8b28e820a744ac48e9c42b4c4215"
+LASTFM_SECRET="9332f12c770c23cae99ae46e134d70bf"
+LASTFM_USER_AGENT="MusicLynx/0.1.0 (http://musiclynx.net)"
+
+var lastfm = new LastFM(LASTFM_API_KEY, { userAgent: LASTFM_USER_AGENT });
+
+const MAX_ARTISTS = 17;
 
 module.exports.get_similar_artists = function(mbid, name, cb) {
   lastfm.artistSimilar({name: decodeURIComponent(name), mbid: mbid, limit: MAX_ARTISTS }, (err, data) => {
