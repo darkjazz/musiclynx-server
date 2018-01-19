@@ -2,7 +2,6 @@ var request = require('request');
 var fsm = require('fuzzy-string-matching');
 var qb = require('./query_builder');
 var uris = require('./uris').uris;
-var b64 = require('base-64');
 var wd = require('./wikidata');
 var mb = require('./musicbrainz');
 

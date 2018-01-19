@@ -1,5 +1,4 @@
 var express = require('express');
-var b64 = require('base-64');
 var sameas = require('./modules/sameas');
 
 var module_sa = express.Router();
@@ -17,7 +16,8 @@ module_sa.get('/find_dbpedia_link/:mbid/:name', function(req, res) {
 });
 
 module_sa.get('/find_musicbrainz_id/:artist_uri/:name', function(req, res) {
-  var artist_uri = b64.decode(req.params.artist_uri);
+  var b = new Buffer(req.params.artist_uri, 'base64');
+  var artist_uri = b.toString();
   var name = req.params.name;
   sameas.find_musicbrainz_id(artist_uri, name, function(artist) {
     res.send(artist);

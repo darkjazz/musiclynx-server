@@ -59,7 +59,8 @@ module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
 });
 
 module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
-  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  var b = new Buffer(req.params.dbpedia_uri, 'base64')
+  var dbp_uri = b.toString();
   var name = req.params.name;
   sa.find_musicbrainz_id(dbp_uri, name, function(mbid) {
     db.construct_artist(dbp_uri, function(artist) {
@@ -88,7 +89,8 @@ module_mls.get('/get_moodplay_artists/:mbid', function(req, res) {
 });
 
 module_mls.get('/get_artists/:dbpedia_uri/:name/:id/:limit/:filter/:degree/:lambda', function(req, res) {
-  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  var b = new Buffer(req.params.dbpedia_uri, 'base64')
+  var dbp_uri = b.toString();
   var name = req.params.name;
   var id = req.params.id;
   var limit = parseInt(req.params.limit);
@@ -102,7 +104,8 @@ module_mls.get('/get_artists/:dbpedia_uri/:name/:id/:limit/:filter/:degree/:lamb
 
 
 module_mls.get('/get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree', function(req, res) {
-  var dbp_uri = b64.decode(req.params.dbpedia_uri);
+  var b = new Buffer(req.params.dbpedia_uri, 'base64')
+  var dbp_uri = b.toString();
   var name = req.params.name;
   var id = req.params.id;
   var limit = parseInt(req.params.limit);
