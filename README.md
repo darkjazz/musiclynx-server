@@ -14,4 +14,4 @@ In order to initialise environmental variables including various API keys, modif
 
 ## License
 
-You touch it, you die! All rights reserved in other words.
+GNU General Public License v3.0, see [LICENSE.md](https://github.com/darkjazz/musiclynx-server/blob/heroku/LICENSE.md)
