@@ -6,10 +6,10 @@ LASTFM_USER_AGENT="MusicLynx/0.1.0 (http://musiclynx.net)"
 
 var lastfm = new LastFM(LASTFM_API_KEY, { userAgent: LASTFM_USER_AGENT });
 
-const MAX_ARTISTS = 17;
+// const MAX_ARTISTS = 17;
 
-module.exports.get_similar_artists = function(mbid, name, cb) {
-  lastfm.artistSimilar({name: decodeURIComponent(name), mbid: mbid, limit: MAX_ARTISTS }, (err, data) => {
+module.exports.get_similar_artists = function(mbid, name, limit, cb) {
+  lastfm.artistSimilar({name: decodeURIComponent(name), mbid: mbid, limit: limit }, (err, data) => {
     if (err) cb({ error: err })
     else {
       var artists = [];

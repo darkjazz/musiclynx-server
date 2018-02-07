@@ -2,8 +2,8 @@ var express = require('express');
 var lfm = require('./modules/lastfm');
 var module_lfm = express.Router();
 
-module_lfm.get('/get_similar_artists/:mbid/:name', function(req, res) {
-  lfm.get_similar_artists(req.params.mbid, req.params.name, function(artists) {
+module_lfm.get('/get_similar_artists/:mbid/:name/:limit', function(req, res) {
+  lfm.get_similar_artists(req.params.mbid, req.params.name, req.params.limit, function(artists) {
     res.send(artists);
   })
 });
