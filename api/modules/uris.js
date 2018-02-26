@@ -12,5 +12,6 @@ module.exports.uris = {
   "server": 'http://127.0.0.1:7757',
   "static_db_dir": 'static/data/',
   'ab_static_db': 'ab_db',
-  'mp_static_db': 'mp_db'
+  'mp_static_db': 'mp_db',
+  'linked_static_db': 'lx_db'
 }

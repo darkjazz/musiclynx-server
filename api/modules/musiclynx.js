@@ -1,91 +1,24 @@
-var av = require('./validator');
-var uris = require('./uris').uris;
-var CouchDB = require('node-couchdb');
-var fs = require('fs');
-var dt = require('date-and-time');
-var prefixes = require('./prefixes').prefixes;
+var jsonfile = require('jsonfile');
+var uris = require('./uris').uris
 
-const dbName = "musicbrainz_artists";
-const couch = new CouchDB();
+var data = {}
 
-var createContext = function(obj) {
-  var pfxs = prefixes.prefixes;
-  var context = {};
-  for (var key in obj) {
-    if (key.indexOf(":") > -1) {
-      pfx = key.substring(0, key.indexOf(":"));
-      context[pfx] = pfxs[pfx];
-    }
+jsonfile.readFile(uris.static_db_dir + uris.linked_static_db + '.json', function(err, obj) {
+  if (err) console.log(err);
+  data = obj;
+  console.log("Linked artists static data loaded!");
+});
+
+module.exports.find_dbpedia_link = function(mbid, cb) {
+  if (mbid in data) {
+    cb(data[mbid]);
   }
-  return context;
+  else cb({ "status": "artist not found!" });
 }
 
-module.exports.search_artists = function (term, cb) {
-  var start = term;
-  var end = term + "Z";
-  var opts = { "startkey": start, "endkey": end };
-  couch.get(dbName, "_design/views/_view/artist_mbid_by_name", opts).then(( get_res ) => {
-    var artists = [];
-    get_res.data.rows.forEach(function(row) {
-      artists.push({ name: row.key, id: row.value });
-    });
-    cb(artists);
-  }, err => {
-    if (err.code == "EDOCMISSING") {
-      cb({ error: "NOT FOUND" });
-    }
-    else {
-      cb({ error: err });
-    }
-  });
-}
-
-module.exports.get_artist = function (id, cb) {
-  couch.get(dbName, id).then(( get_res ) => {
-    var artist_json = get_res.data;
-    if (fs.existsSync(uris.dest_dir + id + '.jpg')) {
-       artist_json.image = uris.dest_dir + id + '.jpg';
-    }
-    cb(artist_json);
-  }, err => {
-    if (err.code == "EDOCMISSING") {
-      cb({ error: "NOT FOUND" });
-    }
-    else {
-      cb({ error: err });
-    }
-  });
-}
-
-module.exports.save_artist = function (doc, id, cb) {
-  doc._id = id;
-  if (av.validate(doc)) {
-    couch.get(dbName, id).then(( get_res ) => {
-      doc._rev = get_res.data._rev;
-      doc["co:count"] += 1;
-      doc["dc:date"] = dt.format(new Date(), 'YYYY-MM-DD[T]HH:mm:ss[Z]');
-      doc["@context"] = createContext(doc);
-      console.log(doc);
-      couch.update(dbName, doc).then(( ud_data ) => {
-        cb(ud_data);
-      }, err => {
-        cb(ud_data);
-      })
-    }, err => {
-      if (err.code == "EDOCMISSING") {
-        doc["co:count"] = 1;
-        doc["dc:date"] = dt.format(new Date(), 'YYYY-MM-DD[T]HH:mm:ss[Z]');
-        doc["@context"] = createContext(doc);
-        console.log(doc);
-        couch.insert(dbName, doc).then(( in_data ) => {
-          cb(in_data);
-        }, err => {
-          cb(in_data);
-        });
-      }
-    });
+module.exports.find_musicbrainz_id = function(artist_uri, cb) {
+  if (artist_uri in data) {
+    cb({'id': data[artist_uri]})
   }
-  else {
-    cb({ error: "INVALID ARTIST" })
-  }
+  else cb({ "status": "artist not found!" })
 }

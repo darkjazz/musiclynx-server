@@ -29,4 +29,19 @@ module_ml.post('/artist/:id', function (req, res) {
   });
 });
 
+module_ml.get('/link_mb_id/:id', function(req, res) {
+  ml.find_dbpedia_link(req.params.id, function(dbp_uri) {
+    res.send(dbp_uri);
+  })
+});
+
+module_ml.get('/link_dbp_uri/:dbpedia_uri', function(req, res) {
+  var b = new Buffer(req.params.dbpedia_uri, 'base64')
+  var dbp_uri = b.toString();
+  ml.find_musicbrainz_id(dbp_uri, function(mbid) {
+    res.send(mbid.id);
+  })
+})
+
+
 module.exports = module_ml;

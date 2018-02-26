@@ -2,7 +2,8 @@ var express = require('express');
 var b64 = require('base-64');
 var db = require('./modules/dbpedia');
 var mb = require('./modules/musicbrainz');
-var sa = require('./modules/sameas');
+// var sa = require('./modules/sameas');
+var lx = require('./modules/musiclynx');
 var ab = require('./modules/acousticbrainz');
 var mp = require('./modules/moodplay');
 var gr = require('./modules/graph');
@@ -46,7 +47,7 @@ module_mls.get('/get_featured_artists', function(req, res) {
 module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
   var mbid = req.params.mbid;
   var name = req.params.name;
-  sa.find_dbpedia_link(mbid, name, function(dbp_uri) {
+  lx.find_dbpedia_link(mbid, function(dbp_uri) {
     db.construct_artist(dbp_uri, function(artist) {
       artist.id = mbid;
       artist.name = decodeURIComponent(name);
@@ -62,7 +63,7 @@ module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
   var b = new Buffer(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
   var name = req.params.name;
-  sa.find_musicbrainz_id(dbp_uri, name, function(mbid) {
+  lx.find_musicbrainz_id(dbp_uri, function(mbid) {
     db.construct_artist(dbp_uri, function(artist) {
       artist.id = mbid.id;
       artist.name = decodeURIComponent(name);
