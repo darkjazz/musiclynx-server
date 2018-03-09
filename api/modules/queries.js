@@ -49,7 +49,13 @@ SELECT DISTINCT ?about ?abs ?dbpedia_uri WHERE {
 
 const ARTIST_CATEGORIES = `
 SELECT DISTINCT ?yago WHERE {
- <%URI> a ?yago .
+  {
+    SELECT ?yago WHERE { <%URI> dbpo:wikiPageRedirects ?dbpedia_uri . ?dbpedia_uri a ?yago . }
+  }
+  UNION
+  {
+    SELECT ?yago WHERE { <%URI> a ?yago . }
+  }
 FILTER(REGEX(STR(?yago),"http://dbpedia.org/class/yago/Wikicat"))
 FILTER(?yago != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
 FILTER(?yago != <http://dbpedia.org/class/yago/WikicatWomen>)

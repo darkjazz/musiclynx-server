@@ -15,7 +15,6 @@ module.exports.find_dbpedia_link = function(mbid, name, cb) {
     cb(data[mbid]);
   }
   else {
-    // temporary solution
     sa.find_dbpedia_link(mbid, name, function(dbp_uri) {
       cb(dbp_uri)
     })
