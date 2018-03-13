@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MusicLynx API</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Kanit:500|Nunito:700|Rock+Salt|Syncopate:700|Inconsolata" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://use.fontawesome.com/84be1777ae.js"></script>
+  <style>
+    h1 {
+      color: #369;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 250%;
+    }
+    h2, h3 {
+      color: #FFAF07;
+      font-family: 'Nunito', sans-serif;
+      font-weight: lighter;
+    }
+    body {
+      background-color: #DDD;
+      margin: 2em;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-image: url("./assets/musiclynx-bg.png");
+    }
+    /* #enddocregion quickstart */
+    body {
+      color: #222;
+      font-family: 'Nunito', sans-serif;
+    }
+    /* #enddocregion toh */
+    a, a:visited {
+      color: #4d6a79;
+      -webkit-transition: color .4s ease;
+      transition: color .4s ease;
+      cursor: pointer;
+      cursor: hand;
+      text-decoration: none;
+    }
+
+    a:hover{
+      color: #039be5;
+    }
+
+    span{
+      font-family: 'Inconsolata', monospace;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>
+      <h1>MusicLynx API</h1>
+      This is MusicLynx API, a backend for the <a href="https://musiclynx.github.io">MusicLynx</a> music
+      discovery platform. It connects to native data stores and remote services that make links between
+      music artists including <a href="https://musicbrainz.org" target="_blank">MusicBrainz</a>,
+      <a href="https://dbpedia.org" target="_blank">Dbpedia</a>,
+      <a href="https://wikidata.org" target="_blank">Wikidata</a>,
+      <a href="https://last.fm" target="_blank">LastFM</a>,
+      <a href="https://acousticbrainz.org" target="_blank">AcousticBrainz</a>, and others.
+      The following modules are accessible: Audio, Artist, Dbpedia, MusicBrainz, MusicLynx, and Sameas.
+      <br><br>
+      The base URI for the API: <a href="http://musiclynx-api.herokuapp.com">http://musiclynx-api.herokuapp.com</a>
+    </p>
+    %CONTENT%
+  </div>
+</body>
+</html>

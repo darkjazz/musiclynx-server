@@ -3,6 +3,10 @@ var ml = require('./modules/musiclynx');
 
 var module_ml = express.Router();
 
+/*
+Module: MusicLynx
+*/
+
 module_ml.get('/', function(req, res) {
   console.log('MusicLynx module root');
 });
@@ -29,16 +33,27 @@ module_ml.post('/artist/:id', function (req, res) {
   });
 });
 
-module_ml.get('/link_mb_id/:id', function(req, res) {
-  ml.find_dbpedia_link(req.params.id, function(dbp_uri) {
+/*
+Link MusicBrainz ID to Dbpedia URI: /link_mb_id/:id
+Example: http://musiclynx-api.herokuapp.com/musiclynx/link_mb_id/96003ca6-5c03-4771-8b94-dbdc74949125/Angel%20Haze
+*/
+module_ml.get('/link_mb_id/:id/:name', function(req, res) {
+  var mbid = req.params.mbid;
+  var name = req.params.name;
+  ml.find_dbpedia_link(mbid, name, function(dbp_uri) {
     res.send(dbp_uri);
   })
 });
 
-module_ml.get('/link_dbp_uri/:dbpedia_uri', function(req, res) {
+/*
+Link Dbpedia URI to MusicBrainz ID: /link_dbp_uri/:dbpedia_uri
+Example: http://musiclynx-api.herokuapp.com/musiclynx/link_dbp_uri/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL0FuZ2VsX0hhemU=/Angel%20Haze
+*/
+module_ml.get('/link_dbp_uri/:dbpedia_uri/:name', function(req, res) {
   var b = new Buffer(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
-  ml.find_musicbrainz_id(dbp_uri, function(mbid) {
+  var name = req.params.name;
+  ml.find_musicbrainz_id(dbp_uri, name, function(mbid) {
     res.send(mbid.id);
   })
 })

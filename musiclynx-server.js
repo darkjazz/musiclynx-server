@@ -2,6 +2,7 @@ require('dotenv').load();
 var cors = require('cors')
 var express = require('express');
 var bodyParser = require('body-parser');
+var front = require('./api/modules/front');
 
 var app = module.exports = express();
 
@@ -33,7 +34,7 @@ app.use('/musiclynx', require('./api/musiclynx'));
 if (allow_deploy_api) app.use('/data', require('./api/data'));
 
 app.get('/', function (req, res) {
-  res.send('MusicLynx Server Root..')
+  res.send(front.serve_front())
 });
 
 app.listen(ip, function () {

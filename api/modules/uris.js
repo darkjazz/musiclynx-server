@@ -13,5 +13,6 @@ module.exports.uris = {
   "static_db_dir": 'static/data/',
   'ab_static_db': 'ab_db',
   'mp_static_db': 'mp_db',
-  'linked_static_db': 'lx_db'
+  'linked_static_db': 'lx_db',
+  'front_template_path': 'static/index.template'
 }

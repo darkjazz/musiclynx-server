@@ -36,6 +36,7 @@
     "charenc": "0.0.2",
     "combined-stream": "^1.0.5",
     "commander": "^2.9.0",
+    "comment-regex": "^1.0.0",
     "content-disposition": "^0.5.2",
     "content-type": "^1.0.2",
     "content-type-parser": "^1.0.1",

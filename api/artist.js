@@ -32,6 +32,10 @@ var featured = [
   { id: "2013f3af-51a3-404d-9afc-91b3f277ea4e", name: "Oumou Sangaré" }
 ];
 
+/*
+Module: Artist
+*/
+
 var artistIsFeatured = function(id) {
   var isFeatured = false;
   featured.forEach(function(artist) {
@@ -40,10 +44,18 @@ var artistIsFeatured = function(id) {
   return isFeatured;
 }
 
+/*
+Get Featured Artists: /get_featured_artists
+Example: http://musiclynx-api.herokuapp.com/artist/get_featured_artists
+*/
 module_mls.get('/get_featured_artists', function(req, res) {
   res.send(featured);
 });
 
+/*
+Get Artist By MusicBrainz ID: /get_mb_artist/:mbid/:name
+Example: http://musiclynx-api.herokuapp.com/artist/get_mb_artist/1dcc8968-f2cd-441c-beda-6270f70f2863/Hole
+*/
 module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
   var mbid = req.params.mbid;
   var name = req.params.name;
@@ -59,6 +71,10 @@ module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
   });
 });
 
+/*
+Get Artist By Dbpedia URI (base-64 encoded): /get_mb_artist/:dbpedia_uri/:name
+Example: http://musiclynx-api.herokuapp.com/artist/get_dbp_artist/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1BpeGllcw==/Pixies
+*/
 module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
   var b = new Buffer(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
@@ -75,6 +91,10 @@ module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
   })
 });
 
+/*
+Get AcousticBrainz Similar Artists By Rhythm, Tonality and Timbre: /get_acousticbrainz_artists/:mbid
+Example: http://musiclynx-api.herokuapp.com/artist/get_acousticbrainz_artists/410c9baf-5469-44f6-9852-826524b80c61
+*/
 module_mls.get('/get_acousticbrainz_artists/:mbid', function(req, res) {
   var mbid = req.params.mbid;
   ab.get_static_similar_artists(mbid, function(data) {
@@ -82,6 +102,10 @@ module_mls.get('/get_acousticbrainz_artists/:mbid', function(req, res) {
   })
 });
 
+/*
+Get Moodplay Similar Artists: /get_moodplay_artists/:mbid
+Example: http://musiclynx-api.herokuapp.com/artist/get_moodplay_artists/702d2b90-eef0-4354-b2c4-6366eba92b7f
+*/
 module_mls.get('/get_moodplay_artists/:mbid', function(req, res) {
   var mbid = req.params.mbid;
   mp.get_static_similar_artists(mbid, function(data) {
@@ -104,6 +128,14 @@ module_mls.get('/get_artists/:dbpedia_uri/:name/:id/:limit/:filter/:degree/:lamb
 });
 
 
+/*
+Get Similar Artist Graph: /get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree
+where :dbpedia_uri is the base-64 encoded Dbpedia URI, :id is MusicBrainz ID,
+:limit is maximum number of artists in the graph, :filter is one of jaccard (1), collaborative (2),
+sorensen (3), maximum degree weighted (default, 4), heat spreading (5),
+and :degree is number of categories to which the artist belongs
+Example: http://musiclynx-api.herokuapp.com/artist/get_artist_graph/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1BpeGllcw==/Pixies/b6b2bb8d-54a9-491f-9607-7b546023b433/47/4/9
+*/
 module_mls.get('/get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree', function(req, res) {
   var b = new Buffer(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
