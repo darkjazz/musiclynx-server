@@ -1,4 +1,4 @@
-var express = require('express');
+  var express = require('express');
 var b64 = require('base-64');
 var db = require('./modules/dbpedia');
 var mb = require('./modules/musicbrainz');
@@ -45,7 +45,7 @@ var artistIsFeatured = function(id) {
 }
 
 /*
-Get Featured Artists: /get_featured_artists
+Get Featured Artists: <span>/get_featured_artists</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_featured_artists
 */
 module_mls.get('/get_featured_artists', function(req, res) {
@@ -53,7 +53,7 @@ module_mls.get('/get_featured_artists', function(req, res) {
 });
 
 /*
-Get Artist By MusicBrainz ID: /get_mb_artist/:mbid/:name
+Get Artist By MusicBrainz ID: <span>/get_mb_artist/:mbid/:name</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_mb_artist/1dcc8968-f2cd-441c-beda-6270f70f2863/Hole
 */
 module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
@@ -72,7 +72,7 @@ module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
 });
 
 /*
-Get Artist By Dbpedia URI (base-64 encoded): /get_mb_artist/:dbpedia_uri/:name
+Get Artist By Dbpedia URI (base-64 encoded): <span>/get_mb_artist/:dbpedia_uri/:name</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_dbp_artist/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1BpeGllcw==/Pixies
 */
 module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
@@ -92,7 +92,7 @@ module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
 });
 
 /*
-Get AcousticBrainz Similar Artists By Rhythm, Tonality and Timbre: /get_acousticbrainz_artists/:mbid
+Get AcousticBrainz Similar Artists By Rhythm, Tonality and Timbre: <span>/get_acousticbrainz_artists/:mbid</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_acousticbrainz_artists/410c9baf-5469-44f6-9852-826524b80c61
 */
 module_mls.get('/get_acousticbrainz_artists/:mbid', function(req, res) {
@@ -103,7 +103,7 @@ module_mls.get('/get_acousticbrainz_artists/:mbid', function(req, res) {
 });
 
 /*
-Get Moodplay Similar Artists: /get_moodplay_artists/:mbid
+Get Moodplay Similar Artists: <span>/get_moodplay_artists/:mbid</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_moodplay_artists/702d2b90-eef0-4354-b2c4-6366eba92b7f
 */
 module_mls.get('/get_moodplay_artists/:mbid', function(req, res) {
@@ -129,7 +129,7 @@ module_mls.get('/get_artists/:dbpedia_uri/:name/:id/:limit/:filter/:degree/:lamb
 
 
 /*
-Get Similar Artist Graph: /get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree
+Get Similar Artist Graph: <span>/get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree</span>
 where :dbpedia_uri is the base-64 encoded Dbpedia URI, :id is MusicBrainz ID,
 :limit is maximum number of artists in the graph, :filter is one of jaccard (1), collaborative (2),
 sorensen (3), maximum degree weighted (default, 4), heat spreading (5),

@@ -34,7 +34,7 @@ module_ml.post('/artist/:id', function (req, res) {
 });
 
 /*
-Link MusicBrainz ID to Dbpedia URI: /link_mb_id/:id
+Link MusicBrainz ID to Dbpedia URI: <span>/link_mb_id/:id</span>
 Example: http://musiclynx-api.herokuapp.com/musiclynx/link_mb_id/96003ca6-5c03-4771-8b94-dbdc74949125/Angel%20Haze
 */
 module_ml.get('/link_mb_id/:id/:name', function(req, res) {
@@ -46,7 +46,7 @@ module_ml.get('/link_mb_id/:id/:name', function(req, res) {
 });
 
 /*
-Link Dbpedia URI to MusicBrainz ID: /link_dbp_uri/:dbpedia_uri
+Link Dbpedia URI to MusicBrainz ID: <span>/link_dbp_uri/:dbpedia_uri</span>
 Example: http://musiclynx-api.herokuapp.com/musiclynx/link_dbp_uri/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL0FuZ2VsX0hhemU=/Angel%20Haze
 */
 module_ml.get('/link_dbp_uri/:dbpedia_uri/:name', function(req, res) {

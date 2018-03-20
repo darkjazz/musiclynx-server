@@ -6,8 +6,8 @@ var front = require('./api/modules/front');
 
 var app = module.exports = express();
 
-//var ip = process.env.MUSICLYNX_SERVER_PORT || 7757;
-var ip = process.env.PORT || 8080;
+// var ip = process.env.MUSICLYNX_SERVER_PORT || 7757;
+var port = process.env.PORT || 8080;
 var db_active = false;
 var allow_deploy_api = false;
 
@@ -37,6 +37,6 @@ app.get('/', function (req, res) {
   res.send(front.serve_front())
 });
 
-app.listen(ip, function () {
-  console.log('MusicLynx server listening on default port!')
+app.listen(port, function () {
+  console.log('MusicLynx server listening on port ' + port + '!')
 });

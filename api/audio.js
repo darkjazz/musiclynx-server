@@ -10,7 +10,7 @@ module_au.get('/', function(req, res) {
 });
 
 /*
-Get Deezer ID: /get_deezer_id/:term
+Get Deezer ID: <span>/get_deezer_id/:term</span>
 Example: http://musiclynx-api.herokuapp.com/audio/get_deezer_id/Santigold
 */
 module_au.get('/get_deezer_id/:term', function(req, res, next) {
@@ -21,7 +21,7 @@ module_au.get('/get_deezer_id/:term', function(req, res, next) {
 });
 
 /*
-Get Deezer Playlist: /get_deezer_playlist/:term
+Get Deezer Playlist: <span>/get_deezer_playlist/:term</span>
 Example: http://musiclynx-api.herokuapp.com/audio/get_deezer_playlist/Merzbow
 */
 module_au.get('/get_deezer_playlist/:term', function(req, res, next) {

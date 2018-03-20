@@ -12,7 +12,7 @@ module_sa.get('/', function(req, res) {
 });
 
 /*
-Find Dbpedia URI By MusicBrainz ID and Name: /find_dbpedia_link/:mbid/:name
+Find Dbpedia URI By MusicBrainz ID and Name: <span>/find_dbpedia_link/:mbid/:name</span>
 Example: http://musiclynx-api.herokuapp.com/sameas/find_dbpedia_link/97b20fe3-0924-4a5f-9955-d0b5c5f9587f/Santigold
 */
 module_sa.get('/find_dbpedia_link/:mbid/:name', function(req, res) {
@@ -24,7 +24,7 @@ module_sa.get('/find_dbpedia_link/:mbid/:name', function(req, res) {
 });
 
 /*
-Find MusicBrainz ID by Dbpedia URI and Name: /find_dbpedia_link/:artist_uri/:name
+Find MusicBrainz ID by Dbpedia URI and Name: <span>/find_dbpedia_link/:artist_uri/:name</span>
 Example: http://musiclynx-api.herokuapp.com/sameas/find_musicbrainz_id/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1NpZ3VyX1LDs3M=/Sigur%20R%C3%B3s
 */
 module_sa.get('/find_musicbrainz_id/:artist_uri/:name', function(req, res) {

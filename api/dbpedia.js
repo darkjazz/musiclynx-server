@@ -27,7 +27,7 @@ module_dbp.get('/get_artist_abstract_directly/:dbpedia_uri', function(req, res) 
 });
 
 /*
-Get Associated Artists By Dbpedia URI (base-64 encoded): /get_associated_artists/:dbpedia_uri
+Get Associated Artists By Dbpedia URI (base-64 encoded): <span>/get_associated_artists/:dbpedia_uri</span>
 Example: http://musiclynx-api.herokuapp.com/dbpedia/get_associated_artists/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL0ZlbGFfS3V0aQ==
 */
 module_dbp.get('/get_associated_artists/:dbpedia_uri', function(req, res) {
@@ -39,7 +39,7 @@ module_dbp.get('/get_associated_artists/:dbpedia_uri', function(req, res) {
 });
 
 /*
-Get Categories By Dbpedia URI (base-64 encoded): /get_categories/:dbpedia_uri
+Get Categories By Dbpedia URI (base-64 encoded): <span>/get_categories/:dbpedia_uri</span>
 Example: http://musiclynx-api.herokuapp.com/dbpedia/get_categories/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL01pcmlhbV9NYWtlYmE=
 */
 module_dbp.get('/get_categories/:dbpedia_uri', function(req, res) {
@@ -70,7 +70,7 @@ module_dbp.get('/describe_artist/:dbpedia_uri', function(req, res) {
 });
 
 /*
-Construct Artist By Dbpedia URI (base-64 encoded): /construct_artist/:dbpedia_uri
+Construct Artist By Dbpedia URI (base-64 encoded): <span>/construct_artist/:dbpedia_uri</span>
 Example: http://musiclynx-api.herokuapp.com/dbpedia/construct_artist/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL0ZhdG91bWF0YV9EaWF3YXJh
 */
 module_dbp.get('/construct_artist/:dbpedia_uri', function(req, res) {
@@ -82,7 +82,7 @@ module_dbp.get('/construct_artist/:dbpedia_uri', function(req, res) {
 });
 
 /*
-Get All Linked Artists By Dbpedia URI (base-64 encoded): /get_all_linked_artists/:dbpedia_uri
+Get All Linked Artists By Dbpedia URI (base-64 encoded): <span>/get_all_linked_artists/:dbpedia_uri</span>
 Example: http://musiclynx-api.herokuapp.com/dbpedia/get_all_linked_artists/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL0ZlbGFfS3V0aQ==
 */
 module_dbp.get('/get_all_linked_artists/:dbpedia_uri', function(req, res) {
@@ -94,7 +94,7 @@ module_dbp.get('/get_all_linked_artists/:dbpedia_uri', function(req, res) {
 });
 
 /*
-Get Category Degrees By Dbpedia URI (base-64 encoded): /get_category_degrees/:dbpedia_uri
+Get Category Degrees By Dbpedia URI (base-64 encoded): <span>/get_category_degrees/:dbpedia_uri</span>
 Example: http://musiclynx-api.herokuapp.com/dbpedia/get_category_degrees/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1BKX0hhcnZleQ==
 */
 module_dbp.get('/get_category_degrees/:dbpedia_uri', function(req, res) {
@@ -106,7 +106,7 @@ module_dbp.get('/get_category_degrees/:dbpedia_uri', function(req, res) {
 });
 
 /*
-Get Artist Redirect By Dbpedia URI (base-64 encoded): /get_artist_redirect/:dbpedia_uri
+Get Artist Redirect By Dbpedia URI (base-64 encoded): <span>/get_artist_redirect/:dbpedia_uri</span>
 Example: http://musiclynx-api.herokuapp.com/dbpedia/get_artist_redirect/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1cuQS5fTW96YXJ0
 */
 module_dbp.get('/get_artist_redirect/:dbpedia_uri', function(req, res) {
