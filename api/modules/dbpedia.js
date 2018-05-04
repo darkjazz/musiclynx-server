@@ -193,9 +193,7 @@ module.exports.construct_artist = function(dbpedia_uri, cb) {
             store.addTriple(triple.s.value, triple.p.value, triple.o.value);
         });
         artist["abstract"] = getSingle(dbpedia_uri, 'dbpo:abstract', null, store);
-        artist["name"] = getSingle(dbpedia_uri, 'foaf:name', null, store);
         artist["wikipedia_uri"] = getSingle(dbpedia_uri, 'dbpo:about', null, store);
-        //artist["image"] = getImageUri(dbpedia_uri, store);
         artist["categories"] = extractCategories(getCollection(dbpedia_uri, 'rdf:type', null, store));
         artist["genres"] = getCollection(dbpedia_uri, 'dbpo:genre', { "rdfs:label": "label" }, store);
         artist["associated_artists"] = { "label": "Associated Artists", "artists": getCollection(dbpedia_uri, 'dbpo:associatedMusicalArtist', { "foaf:name": "name" }, store) };

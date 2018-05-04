@@ -156,10 +156,16 @@ module.exports.get_artist_graph = function(dbpedia_uri, name, id, limit, filter,
         if (artists.length > 0) {
           artists = fi.apply_filter(filter, artists, category_degrees, degree, 1.0, limit);
           categories = collectCategories(artists, category_degrees);
-          artists = addAcousticBrainzLinks(id, artists);
-          categories = addAcousticBrainzCategories(id, categories);
-          artists = addMoodplayLinks(id, artists);
-          categories = addMoodplayCategories(id, categories);
+        }
+        else {
+          artists = [];
+          categories = {};
+        }
+        artists = addAcousticBrainzLinks(id, artists);
+        categories = addAcousticBrainzCategories(id, categories);
+        artists = addMoodplayLinks(id, artists);
+        categories = addMoodplayCategories(id, categories);
+        if (artists.length > 0) {
           graph = groupArtists(artists, categories);
           Object.keys(categories).forEach(function(category) {
             if (category !== 'undefined') {
@@ -177,8 +183,8 @@ module.exports.get_artist_graph = function(dbpedia_uri, name, id, limit, filter,
                 }
               });
             }
-          });
-          cb(graph);
+            });
+            cb(graph);
         }
         else {
           cb({"error": "no linked artists found"});
