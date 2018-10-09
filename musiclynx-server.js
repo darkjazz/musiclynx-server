@@ -6,7 +6,6 @@ var front = require('./api/modules/front');
 
 var app = module.exports = express();
 
-// var ip = process.env.MUSICLYNX_SERVER_PORT || 7757;
 var port = process.env.PORT || 8080;
 var db_active = false;
 var allow_deploy_api = false;
@@ -29,6 +28,8 @@ app.use('/wikidata', require('./api/wikidata'));
 app.use('/sameas', require('./api/sameas'));
 app.use('/audio', require('./api/audio'));
 app.use('/musiclynx', require('./api/musiclynx'));
+app.use('/musixmatch', require('./api/musixmatch'));
+app.use('/moodplay', require('./api/moodplay'));
 // app.use('/lastfm', require('./api/lastfm'));
 
 if (allow_deploy_api) app.use('/data', require('./api/data'));

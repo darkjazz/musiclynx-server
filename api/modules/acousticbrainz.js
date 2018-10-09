@@ -15,7 +15,9 @@ jsonfile.readFile(uris.static_db_dir + uris.ab_static_db + '.json', function(err
   console.log("Acousticbrainz static data loaded!");
 });
 
-var categoryName = function(feature) { return "AcousticBrainz similar artists by " + feature; }
+var capitalize = function(str) { return str.charAt(0).toUpperCase() + str.slice(1) }
+
+var categoryName = function(feature) { return "Similar Artists By " + capitalize(feature); }
 
 module.exports.get_category_name = function(feature) {
   return category_name(feature);

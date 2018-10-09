@@ -9,4 +9,10 @@ module_mp.get('/get_similar_artists/:name/:limit', function(req, res) {
   })
 });
 
+module_mp.get('/get_nearest_track/:valence/:arousal', function(req, res) {
+  mp.get_nearest_track(req.params.valence, req.params.arousal, function(track) {
+    res.send(track);
+  })
+});
+
 module.exports = module_mp;

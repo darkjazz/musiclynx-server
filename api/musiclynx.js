@@ -50,7 +50,7 @@ Link Dbpedia URI to MusicBrainz ID: <span>/link_dbp_uri/:dbpedia_uri</span>
 Example: http://musiclynx-api.herokuapp.com/musiclynx/link_dbp_uri/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL0FuZ2VsX0hhemU=/Angel%20Haze
 */
 module_ml.get('/link_dbp_uri/:dbpedia_uri/:name', function(req, res) {
-  var b = new Buffer(req.params.dbpedia_uri, 'base64')
+  var b = Buffer.from(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
   var name = req.params.name;
   ml.find_musicbrainz_id(dbp_uri, name, function(mbid) {

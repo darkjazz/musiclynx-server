@@ -71,10 +71,10 @@ SELECT ?dbpedia_uri ?redirected_uri WHERE {
 
 const ASSOCIATED_ARTISTS = `
 SELECT DISTINCT ?dbpedia_uri ?name WHERE {
- { ?dbpedia_uri dbpo:associatedMusicalArtist <%URI> }
+ { <%URI> dbpo:associatedMusicalArtist ?dbpedia_uri  }
  UNION
- { ?dbpedia_uri dbpo:associatedBand <%URI> }
- ?dbpedia_uri rdfs:label ?name .
+ { <%URI> dbpo:associatedBand ?dbpedia_uri }
+ ?dbpedia_uri foaf:name ?name .
  FILTER( LANG(?name)="%LANG" || LANG(?name)="") .
 }
 `;
@@ -201,6 +201,25 @@ WHERE
 } LIMIT %LIMIT
 `;
 
+const MOODPLAY_NEAREST_TRACK = `
+SELECT ?artist ?title ?filename ?diff ?valence ?arousal
+WHERE
+{
+  SELECT ?artist ?title ?filename ?valence ?arousal ((ABS(%VALENCE-?valence) + ABS(%AROUSAL-?arousal)) as ?diff)
+  WHERE {
+    ?coords mood:valence ?valence ;
+      mood:arousal ?arousal ;
+      mood:configuration mood:actfold4 .
+    ?lfmid mood:coordinates ?coords ;
+      mood:ilm_id ?ilmid ;
+      mood:artist_name ?artist ;
+      mood:song_title ?title ;
+      mo:available_as ?fileid .
+    ?fileid mood:filename ?filename .
+  } ORDER BY ?diff
+} LIMIT 1
+`
+
 const WIKICAT_LINKS = `
 SELECT DISTINCT ?uri ?name WHERE {
  ?uri a <%YAGO_URI> ;
@@ -223,5 +242,6 @@ module.exports.queries = {
   "image_by_mbid": IMAGE_BY_MBID,
   "mbid_by_entityid": MBID_BY_ENTITYID,
   "moodplay_artists": MOODPLAY_ARTISTS,
+  "moodplay_nearest_track": MOODPLAY_NEAREST_TRACK,
   "wikicat_links": WIKICAT_LINKS
 }

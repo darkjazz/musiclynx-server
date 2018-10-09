@@ -76,7 +76,7 @@ Get Artist By Dbpedia URI (base-64 encoded): <span>/get_mb_artist/:dbpedia_uri/:
 Example: http://musiclynx-api.herokuapp.com/artist/get_dbp_artist/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1BpeGllcw==/Pixies
 */
 module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
-  var b = new Buffer(req.params.dbpedia_uri, 'base64')
+  var b = Buffer.from(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
   var name = req.params.name;
   lx.find_musicbrainz_id(dbp_uri, name, function(mbid) {
@@ -114,7 +114,7 @@ module_mls.get('/get_moodplay_artists/:mbid', function(req, res) {
 });
 
 module_mls.get('/get_artists/:dbpedia_uri/:name/:id/:limit/:filter/:degree/:lambda', function(req, res) {
-  var b = new Buffer(req.params.dbpedia_uri, 'base64')
+  var b = Buffer.from(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
   var name = req.params.name;
   var id = req.params.id;
@@ -137,7 +137,7 @@ and :degree is number of categories to which the artist belongs
 Example: http://musiclynx-api.herokuapp.com/artist/get_artist_graph/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1BpeGllcw==/Pixies/b6b2bb8d-54a9-491f-9607-7b546023b433/47/4/9
 */
 module_mls.get('/get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree', function(req, res) {
-  var b = new Buffer(req.params.dbpedia_uri, 'base64')
+  var b = Buffer.from(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
   var name = req.params.name;
   var id = req.params.id;

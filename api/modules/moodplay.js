@@ -32,10 +32,30 @@ var get_similar_artists = function(name, limit, cb) {
 
 module.exports.get_similar_artists = get_similar_artists;
 
+module.exports.get_nearest_track = function(valence, arousal, cb) {
+  var params = { VALENCE: valence, AROUSAL: arousal };
+  var query = qb.buildQuery("moodplay_nearest_track", params);
+  console.log(uris.mood_uri + "/mood?query=" + encodeURIComponent(query) + "&output=json");
+  var options = { method: 'GET', uri: uris.mood_uri + "/mood?query=" + encodeURIComponent(query) + "&output=json" };
+  request(options, function(err, response, body) {
+    var json = JSON.parse(body);
+    var track = {};
+    if (json.results.bindings.length == 1) {
+      nearest = json.results.bindings[0];
+      track["title"] = nearest.title.value;
+      track["artist"] = nearest.artist.value;
+      track["filename"] = nearest.filename.value;
+      track["valence"] = nearest.valence.value;
+      track["arousal"] = nearest.arousal.value;
+    }
+    cb(track);
+  });
+}
+
 module.exports.get_static_similar_artists = function(id, cb) {
   if (id in data) {
     var category = {};
-    category.label = "Moodplay similar artists";
+    category.label = "Similar Artists By Mood";
     category.artists = data[id].links;
     cb(category);
   }

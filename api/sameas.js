@@ -28,7 +28,7 @@ Find MusicBrainz ID by Dbpedia URI and Name: <span>/find_dbpedia_link/:artist_ur
 Example: http://musiclynx-api.herokuapp.com/sameas/find_musicbrainz_id/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1NpZ3VyX1LDs3M=/Sigur%20R%C3%B3s
 */
 module_sa.get('/find_musicbrainz_id/:artist_uri/:name', function(req, res) {
-  var b = new Buffer(req.params.artist_uri, 'base64');
+  var b = Buffer.from(req.params.artist_uri, 'base64');
   var artist_uri = b.toString();
   var name = req.params.name;
   sameas.find_musicbrainz_id(artist_uri, name, function(artist) {

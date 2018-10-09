@@ -1,5 +1,5 @@
 var request = require('request');
-var images = require('images');
+// var images = require('images');
 var image_downloader = require('image-downloader');
 var uris = require('./uris').uris;
 var qb = require('./query_builder');
@@ -60,7 +60,7 @@ module.exports.get_reduced_image = function(mbid, cb) {
             if (error) cb(error);
             var save_name = uris.dest_dir + mbid + "." + filename.split(".").slice(-1)[0].toLowerCase();
             console.log("reducing " + filename + " to " + save_name);
-            images(filename).size(max_size).save(save_name);
+            // images(filename).size(max_size).save(save_name);
             cb({ local_uri: save_name, original_uri: img_uri, entity_id: wd_entity_id });
           });
         });
