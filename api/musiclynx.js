@@ -1,5 +1,6 @@
 var express = require('express');
 var ml = require('./modules/musiclynx');
+var log = require('./modules/logger');
 
 var module_ml = express.Router();
 
@@ -31,6 +32,11 @@ module_ml.post('/artist/:id', function (req, res) {
   ml.save_artist(doc, id, function(response) {
     res.send(response);
   });
+});
+
+module_ml.get('/log_category/:category', function(req, res) {
+  log.log_link(req.ip, '000-000-000-000', req.params.category);
+  res.send();
 });
 
 /*

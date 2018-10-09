@@ -1,5 +1,6 @@
 var express = require('express');
 var mb = require('./modules/musicbrainz');
+var log = require('./modules/logger');
 var module_mb = express.Router();
 
 /*
@@ -17,6 +18,7 @@ Example: http://musiclynx-api.herokuapp.com/musicbrainz/artist_search/Ellen%20Al
 module_mb.get('/artist_search/:searchTerm', function(req, res) {
   var searchTerm = req.params.searchTerm;
   mb.artist_search(searchTerm, function(artists) {
+    log.log_search(req.ip, '000-000-000-000', searchTerm);
     res.send(artists);
   });
 });

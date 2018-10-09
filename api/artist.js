@@ -7,6 +7,7 @@ var lx = require('./modules/musiclynx');
 var ab = require('./modules/acousticbrainz');
 var mp = require('./modules/moodplay');
 var gr = require('./modules/graph');
+var log = require('./modules/logger');
 
 var module_mls = express.Router();
 
@@ -66,6 +67,7 @@ module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
       artist.dbpedia_uri = dbp_uri;
       if (artistIsFeatured(artist.id))
         artist.image = './assets/featured/' + artist.id + '.jpg';
+      log.log_artist(req.ip, '000-000-000-000', artist);
       res.send(artist);
     })
   });
@@ -86,6 +88,7 @@ module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
       artist.dbpedia_uri = dbp_uri;
       if (artistIsFeatured(artist.id))
         artist.image = './assets/featured/' + artist.id + '.jpg';
+      log.log_artist(req.ip, '000-000-000-000', artist);
       res.send(artist);
     });
   })

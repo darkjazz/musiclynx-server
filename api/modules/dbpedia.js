@@ -9,7 +9,6 @@ var p = require('./prefixes');
 var wd = require('./wikidata');
 var fi = require('./filter');
 var gr = require('./graph');
-// var ldf = require('ldf-client');
 
 var defaultTimeout = 8000;
 const DBP_URI = 'http://dbpedia.org/sparql';
