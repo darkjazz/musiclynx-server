@@ -15,10 +15,10 @@ module_mb.get('/', function(req, res) {
 Search Artists: <span>/artist_search/:searchTerm</span>
 Example: http://musiclynx-api.herokuapp.com/musicbrainz/artist_search/Ellen%20Allien
 */
-module_mb.get('/artist_search/:searchTerm', function(req, res) {
+module_mb.get('/artist_search/:searchTerm/:user_guid', function(req, res) {
   var searchTerm = req.params.searchTerm;
   mb.artist_search(searchTerm, function(artists) {
-    log.log_search(req.ip, '000-000-000-000', searchTerm);
+    log.log_search(req.ip, req.params.user_guid, searchTerm);
     res.send(artists);
   });
 });

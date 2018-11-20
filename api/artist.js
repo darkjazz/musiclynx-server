@@ -1,4 +1,4 @@
-  var express = require('express');
+var express = require('express');
 var b64 = require('base-64');
 var db = require('./modules/dbpedia');
 var mb = require('./modules/musicbrainz');
@@ -57,7 +57,7 @@ module_mls.get('/get_featured_artists', function(req, res) {
 Get Artist By MusicBrainz ID: <span>/get_mb_artist/:mbid/:name</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_mb_artist/1dcc8968-f2cd-441c-beda-6270f70f2863/Hole
 */
-module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
+module_mls.get('/get_mb_artist/:mbid/:name/:user_guid', function(req, res) {
   var mbid = req.params.mbid;
   var name = req.params.name;
   lx.find_dbpedia_link(mbid, name, function(dbp_uri) {
@@ -67,7 +67,7 @@ module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
       artist.dbpedia_uri = dbp_uri;
       if (artistIsFeatured(artist.id))
         artist.image = './assets/featured/' + artist.id + '.jpg';
-      log.log_artist(req.ip, '000-000-000-000', artist);
+      log.log_artist(req.ip, req.params.user_guid, artist);
       res.send(artist);
     })
   });
@@ -77,7 +77,7 @@ module_mls.get('/get_mb_artist/:mbid/:name', function(req, res) {
 Get Artist By Dbpedia URI (base-64 encoded): <span>/get_mb_artist/:dbpedia_uri/:name</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_dbp_artist/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1BpeGllcw==/Pixies
 */
-module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
+module_mls.get('/get_dbp_artist/:dbpedia_uri/:name/:user_guid', function(req, res) {
   var b = Buffer.from(req.params.dbpedia_uri, 'base64')
   var dbp_uri = b.toString();
   var name = req.params.name;
@@ -88,7 +88,7 @@ module_mls.get('/get_dbp_artist/:dbpedia_uri/:name', function(req, res) {
       artist.dbpedia_uri = dbp_uri;
       if (artistIsFeatured(artist.id))
         artist.image = './assets/featured/' + artist.id + '.jpg';
-      log.log_artist(req.ip, '000-000-000-000', artist);
+      log.log_artist(req.ip, req.params.user_guid, artist);
       res.send(artist);
     });
   })
@@ -151,5 +151,11 @@ module_mls.get('/get_artist_graph/:dbpedia_uri/:name/:id/:limit/:filter/:degree'
     res.send(graph);
   })
 });
+
+module_mls.get('/log_category/:category/:user_guid', function(req, res) {
+  log.log_link(req.ip, req.params.user_guid, req.params.category);
+  res.send();
+});
+
 
 module.exports = module_mls;
