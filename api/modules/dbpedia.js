@@ -11,7 +11,8 @@ var fi = require('./filter');
 var gr = require('./graph');
 
 var defaultTimeout = 8000;
-const DBP_URI = 'http://dbpedia.org/sparql';
+// const DBP_URI = 'http://dbpedia.org/sparql';
+const DBP_URI = 'http://dbpedia-live.openlinksw.com/sparql';
 
 var ur = function(tm) {
   if (tm && tm.includes(":") && !tm.includes("http") ) {
@@ -49,7 +50,9 @@ var getCollection = function(s, p, map, store) {
 }
 
 var getCategoryLabel = function(uri) {
-  return "Other" + uri.replace("Wikicat", "").split("/").slice(-1)[0].replace(/([A-Z0-9]+)/g, ' $1')
+  var label = uri.replace("Wikicat", "").split("/").slice(-1)[0].replace(/((?<=[a-z])[A-Z]|[A-Z](?=[a-z]))/g, ' $1');
+  label = label.replace("- ", "-");
+  return "Other " + label;
 }
 
 var extractCategories = function(categories) {

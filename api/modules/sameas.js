@@ -38,51 +38,57 @@ module.exports.find_dbpedia_link = function(mbid, artist_name, cb) {
   var query = uris.bbc_artists + mbid + '#artist';
   request({ method: 'GET', uri: uris.sameas + 'json?uri=' + query }, function(err, response, body)
   {
-    var json = JSON.parse(body);
-    var match = findBestMatch(json[0]["duplicates"], artist_name);
-    cb(match);
+    if (err) cb({ "error": "not found" })
+    else {
+      var json = JSON.parse(body);
+      var match = findBestMatch(json[0]["duplicates"], artist_name);
+      cb(match);
+    }
   });
 }
 
 module.exports.find_musicbrainz_id = function(artist_uri, name, cb) {
   request({ method: 'GET', uri: uris.sameas + 'json?uri=' + artist_uri }, function(err, response, body)
   {
-    var json = JSON.parse(body);
-    var match = findMBID(json[0]["duplicates"]);
-    if (match) {
-      var artist = {
-        name: decodeURIComponent(name),
-        id: match.split('#')[0],
-        dbpedia_uri: artist_uri
-      }
-      cb(artist);
-    }
+    if (err) cb({ "error": "not found" })
     else {
-      if (json.uri) {
-        var entity_id = json.uri.split("/").slice(-1)[0];
-        wd.get_mbid_by_entityid(entity_id, function(mbid) {
-          var wd_artist = {
-            id: mbid['mbid'],
-            name: name,
-            entity_id: entity_id,
-            dbpedia_uri: artist_uri
-          };
-          cb(artist);
-        })
+      var json = JSON.parse(body);
+      var match = findMBID(json[0]["duplicates"]);
+      if (match) {
+        var artist = {
+          name: decodeURIComponent(name),
+          id: match.split('#')[0],
+          dbpedia_uri: artist_uri
+        }
+        cb(artist);
       }
       else {
-        mb.artist_search(name, function(body) {
-          var json = JSON.parse(body);
-          if (json["artists"].length > 0 && json["artists"][0].score == 100) {
-            var artist = {
-              id: json["artists"][0].id,
-              name: json["artists"][0].name,
-              score: 100,
+        if (json.uri) {
+          var entity_id = json.uri.split("/").slice(-1)[0];
+          wd.get_mbid_by_entityid(entity_id, function(mbid) {
+            var wd_artist = {
+              id: mbid['mbid'],
+              name: name,
+              entity_id: entity_id,
               dbpedia_uri: artist_uri
             };
             cb(artist);
-          }
-        });
+          })
+        }
+        else {
+          mb.artist_search(name, function(body) {
+            var json = JSON.parse(body);
+            if (json["artists"].length > 0 && json["artists"][0].score == 100) {
+              var artist = {
+                id: json["artists"][0].id,
+                name: json["artists"][0].name,
+                score: 100,
+                dbpedia_uri: artist_uri
+              };
+              cb(artist);
+            }
+          });
+        }
       }
     }
   });

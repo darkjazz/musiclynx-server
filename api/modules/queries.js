@@ -94,6 +94,10 @@ SELECT ?wikicat COUNT(DISTINCT ?name) as ?degree WHERE {
 `;
 
 const CONSTRUCT_ARTIST = `
+PREFIX dbpo: <http://dbpedia.org/ontology/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
 CONSTRUCT {
    <%URI> dbpo:abstract ?abstract ;
       dbpo:wikiPageRedirects ?dbpedia_uri ;
@@ -113,6 +117,7 @@ WHERE {
         dbpo:abstract ?abstract .
       OPTIONAL { <%URI> dbpo:genre ?genre_uri .  ?genre_uri rdfs:label ?genre . }
       OPTIONAL { <%URI> dbpo:associatedMusicalArtist ?assoc_uri . ?assoc_uri foaf:name ?assoc . }
+      OPTIONAL { <%URI> a ?wikicat . FILTER(REGEX(STR(?wikicat),"http://dbpedia.org/class/yago/Wikicat")) }
     }
   }
   UNION
@@ -123,16 +128,15 @@ WHERE {
         dbpo:abstract ?abstract .
       OPTIONAL { <%URI> dbpo:genre ?genre_uri .  ?genre_uri rdfs:label ?genre . }
       OPTIONAL { <%URI> dbpo:associatedMusicalArtist ?assoc_uri . ?assoc_uri foaf:name ?assoc . }
+      OPTIONAL { <%URI> a ?wikicat . FILTER(REGEX(STR(?wikicat),"http://dbpedia.org/class/yago/Wikicat")) }
       BIND(<%URI> as ?dbpedia_uri)
     }
   }
-
-  FILTER(REGEX(STR(?wikicat),"http://dbpedia.org/class/yago/Wikicat"))
   FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
   FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatWomen>)
-  FILTER( LANG(?abstract)="%LANG" || LANG(?abstract)="")
-  FILTER( LANG(?genre)="%LANG" || LANG(?genre)="" )
-  FILTER( LANG(?assoc)="%LANG" || LANG(?assoc)="" )
+  FILTER( LANG(?abstract)="en" || LANG(?abstract)="")
+  FILTER( LANG(?genre)="en" || LANG(?genre)="" )
+  FILTER( LANG(?assoc)="en" || LANG(?assoc)="" )
 }
 `;
 
