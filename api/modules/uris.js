@@ -11,6 +11,7 @@ module.exports.uris = {
   "source_dir": 'static/source/',
   "dest_dir": 'static/reduced/',
   "server": 'http://127.0.0.1:7757',
+  "mongodb": 'mongodb://%u:%p@ds143614.mlab.com:43614/musiclynx-log-dev',
   "static_db_dir": 'static/data/',
   'ab_static_db': 'ab_db',
   'mp_static_db': 'mp_db',
