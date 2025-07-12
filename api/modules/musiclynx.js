@@ -1,33 +1,31 @@
-var jsonfile = require('jsonfile');
-var uris = require('./uris').uris
-var sa = require('./sameas');
+var jsonfile = require("jsonfile");
+var uris = require("./uris").uris;
+var sa = require("./sameas");
 
-var data = {}
+var data = {};
 
-jsonfile.readFile(uris.static_db_dir + uris.linked_static_db + '.json', function(err, obj) {
-  if (err) console.log(err);
-  data = obj;
-  console.log("Linked artists static data loaded!");
-});
+jsonfile.readFile(
+  uris.static_db_dir + uris.linked_static_db + ".json",
+  function (err, obj) {
+    if (err) console.log(err);
+    data = obj;
+    console.log("Linked artists static data loaded!");
+  },
+);
 
-module.exports.find_dbpedia_link = function(mbid, name, cb) {
+module.exports.find_dbpedia_link = function (mbid, cb) {
+  console.log(mbid);
   if (mbid in data) {
     cb(data[mbid]);
+  } else {
+    cb({ error: "not found" });
   }
-  else {
-    sa.find_dbpedia_link(mbid, name, function(dbp_uri) {
-      cb(dbp_uri)
-    })
-  }
-}
+};
 
-module.exports.find_musicbrainz_id = function(artist_uri, name, cb) {
+module.exports.find_musicbrainz_id = function (artist_uri, cb) {
   if (artist_uri in data) {
-    cb({'id': data[artist_uri]})
+    cb(data[artist_uri]);
+  } else {
+    cb({ error: "not found" });
   }
-  else {
-    sa.find_musicbrainz_id(artist_uri, name, function(artist) {
-      cb(artist)
-    })
-  }
-}
+};
