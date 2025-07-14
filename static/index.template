@@ -13,7 +13,7 @@
   <style>
     h1 {
       color: #369;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:'Nunito', sans-serif;
       font-size: 250%;
     }
     h2, h3 {
@@ -22,7 +22,7 @@
       font-weight: lighter;
     }
     body {
-      background-color: #DDD;
+      background-color: #8199b5;
       margin: 2em;
       background-size: cover;
       background-repeat: no-repeat;

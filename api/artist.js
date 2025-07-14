@@ -11,8 +11,8 @@ var gr = require("./modules/graph");
 var module_mls = express.Router();
 
 var featured = [
-  { id: "6ac275dd-eb37-42cf-9a60-6b147320c7be", name: "KNEECAP" },
-  { id: "d1bc5be1-f552-4e2e-95ae-da8d6a4d3c17", name: "Bob Vylan" },
+  // { id: "6ac275dd-eb37-42cf-9a60-6b147320c7be", name: "KNEECAP" },
+  // { id: "d1bc5be1-f552-4e2e-95ae-da8d6a4d3c17", name: "Bob Vylan" },
   { id: "b8e3d1ae-5983-4af1-b226-aa009b294111", name: "TR/ST" },
   { id: "ba0257f5-ceb9-4962-8759-4160f3e3e469", name: "Spring Heel Jack" },
   {
@@ -22,12 +22,14 @@ var featured = [
   { id: "5d39821b-83ad-4c9a-bbaa-2ae32ab0f7b8", name: "Dillinja" },
   { id: "e8d1f02e-7e77-4415-85b6-dc17e08debbf", name: "Murcof" },
   { id: "4b93ee9e-e39d-4036-9527-551b2236f5af", name: "Princess Nokia" },
-  { id: "6983949c-bea5-4231-b7e7-09c4b1ead6fc", name: "KOKOKO!" },
+  // { id: "6983949c-bea5-4231-b7e7-09c4b1ead6fc", name: "KOKOKO!" },
   { id: "2b82372f-8c85-4b47-a9fc-36fe4d4df5b4", name: "The Comet Is Coming" },
   { id: "fddb7d67-7977-4ab5-884c-f5644c78b700", name: "Kultur Shock" },
   { id: "ba54a312-7e90-4751-8284-4f32ea54a4fe", name: "Senyawa" },
   { id: "470320f0-ac2c-43bb-98f6-b03d063e9cac", name: "B-Complex" },
-  { id: "72d65d46-ab84-443c-bed2-b820e11ef142", name: "Mbongwana Star" },
+  { id: "91838da6-e1cc-46ff-b235-2a2b83814608", name: "Brenda Fassie" },
+  { id: "eb9ad275-dc6b-4d00-9dea-e60b02313a72", name: "Protoje" },
+  // { id: "72d65d46-ab84-443c-bed2-b820e11ef142", name: "Mbongwana Star" },
   { id: "2ff63f00-0954-4b14-9007-e19b822fc8b2", name: "Ellen Allien" },
   { id: "97b20fe3-0924-4a5f-9955-d0b5c5f9587f", name: "Santigold" },
   { id: "1dcc8968-f2cd-441c-beda-6270f70f2863", name: "Hole" },
@@ -201,5 +203,12 @@ module_mls.get(
     });
   },
 );
+
+module_mls.get("/remove_from_cache/:mbid", function (req, res) {
+  var id = req.params.mbid;
+  gr.remove_from_cache(id, (re) => {
+    res.send(re);
+  });
+});
 
 module.exports = module_mls;

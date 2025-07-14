@@ -51,12 +51,9 @@ var getCollection = function (s, p, map, store) {
 };
 
 var getCategoryLabel = function (uri) {
-  var label = uri
-    .replace("Wikicat", "")
-    .split("/")
-    .slice(-1)[0]
-    .replace(/((?<=[a-z])[A-Z]|[A-Z](?=[a-z]))/g, " $1");
-  label = label.replace("- ", "-");
+  let label = uri.split("/").pop();
+  label = label.replace(/^Category:/, "");
+  label = label.replace(/[_-]+/g, " ");
   return "Other " + label;
 };
 

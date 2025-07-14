@@ -14,17 +14,20 @@ jsonfile.readFile(
 );
 
 module.exports.find_dbpedia_link = function (mbid, cb) {
-  console.log(mbid);
   if (mbid in data) {
-    cb(data[mbid]);
+    cb(decodeURIComponent(data[mbid]));
   } else {
     cb({ error: "not found" });
   }
 };
 
 module.exports.find_musicbrainz_id = function (artist_uri, cb) {
-  if (artist_uri in data) {
-    cb(data[artist_uri]);
+  const parts = artist_uri.split("/");
+  const name = encodeURIComponent(parts.pop());
+  const encoded_uri = parts.join("/") + "/" + name;
+
+  if (encoded_uri in data) {
+    cb(data[encoded_uri]);
   } else {
     cb({ error: "not found" });
   }

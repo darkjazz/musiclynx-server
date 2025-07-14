@@ -18,5 +18,6 @@ module.exports.uris = {
   ab_static_db: "ab_db",
   mp_static_db: "mp_db",
   linked_static_db: "lx_db",
+  graph_static_db: "graph",
   front_template_path: "static/index.template",
 };

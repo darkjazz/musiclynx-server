@@ -227,12 +227,24 @@ WHERE
 `;
 
 const WIKICAT_LINKS = `
-SELECT DISTINCT ?uri ?name WHERE {
- ?uri a <%YAGO_URI> ;
-   foaf:name ?name .
- { ?uri a dbpo:Band } UNION { ?uri a dbpo:MusicArtist } UNION { ?uri a dbp-yago:Composer109947232 } UNION { ?uri a yago:Musician110340312 }
- FILTER(?uri != <%ARTIST_URI>) .
-} LIMIT %LIMIT
+  PREFIX dbpo: <http://dbpedia.org/ontology/>
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+  SELECT DISTINCT ?uri ?name WHERE {
+    ?uri a <%CATEGORY_URI> ;
+         foaf:name ?name .
+
+    FILTER(?uri != <%ARTIST_URI>) .
+
+    {
+      ?uri a dbpo:Band
+    } UNION {
+      ?uri a dbpo:MusicalArtist
+    } UNION {
+      ?uri a dbpo:ClassicalMusicArtist
+    }
+  }
+  LIMIT %LIMIT
 `;
 
 module.exports.queries = {
