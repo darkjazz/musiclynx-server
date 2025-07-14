@@ -1,20 +1,34 @@
 const ALL_LINKED_ARTISTS = `
-SELECT DISTINCT ?uri MIN(?n) as ?name COUNT(DISTINCT ?wikicatA) as ?common COUNT(DISTINCT ?wikicatB) as ?degree group_concat(distinct ?wikicatA;separator="; ") as ?categories WHERE {
- 	<%URI> a ?wikicatA .
-	?uri a ?wikicatA, ?wikicatB, ?type ;
-   	foaf:name ?n .
- 	VALUES ?type {
- 		dbpo:Band dbpo:MusicArtist dbp-yago:Composer109947232 yago:Musician110340312
- 	}
- 	FILTER(REGEX(STR(?wikicatA),"http://dbpedia.org/class/yago/Wikicat"))
-	FILTER(?wikicatA != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
-	FILTER(?wikicatA != <http://dbpedia.org/class/yago/WikicatWomen>)
- 	FILTER(REGEX(STR(?wikicatB),"http://dbpedia.org/class/yago/Wikicat"))
-	FILTER(?wikicatB != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
-	FILTER(?wikicatB != <http://dbpedia.org/class/yago/WikicatWomen>)
-  FILTER (LANG(?n)="en" || LANG(?n)="" )
-  FILTER (?uri != <%URI>)
-} GROUP BY ?uri ORDER BY DESC(?common) ASC(?degree)
+  PREFIX dbpo: <http://dbpedia.org/ontology/>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+  SELECT DISTINCT ?uri (MIN(?n) AS ?name)
+         (COUNT(DISTINCT ?categoryA) AS ?common)
+         (COUNT(DISTINCT ?categoryB) AS ?degree)
+         (GROUP_CONCAT(DISTINCT ?categoryA; separator="; ") AS ?categories)
+  WHERE {
+    # Get categories of the seed artist
+    <%URI> dct:subject ?categoryA .
+
+    # Other artists with overlapping categories
+    ?uri dct:subject ?categoryA, ?categoryB ;
+         a ?type ;
+         foaf:name ?n .
+
+    VALUES ?type {
+      dbpo:Band dbpo:MusicalArtist dbpo:ClassicalMusicArtist
+    }
+
+    FILTER(?uri != <%URI>)
+    FILTER(STRSTARTS(STR(?categoryA), "http://dbpedia.org/resource/Category:"))
+    FILTER(STRSTARTS(STR(?categoryB), "http://dbpedia.org/resource/Category:"))
+    FILTER(!STRENDS(STR(?categoryA), "Living_people"))
+    FILTER(!STRENDS(STR(?categoryB), "Living_people"))
+    FILTER(LANG(?n) = "en" || LANG(?n) = "")
+  }
+  GROUP BY ?uri
+  ORDER BY DESC(?common) ASC(?degree)
 `;
 
 const ALL_MOODPLAY_ARTISTS = `
@@ -27,47 +41,32 @@ WHERE
 `;
 
 const ARTIST_ABSTRACT = `
-SELECT DISTINCT ?about ?abs ?dbpedia_uri WHERE {
-  {
-    SELECT ?about ?abs ?dbpedia_uri WHERE {
-      <%URI> dbpo:wikiPageRedirects ?dbpedia_uri .
-      ?dbpedia_uri foaf:isPrimaryTopicOf ?about ;
-        dbpo:abstract ?abs .
-    }
-  }
-  UNION
-  {
-    SELECT ?about ?abs ?dbpedia_uri WHERE {
-      <%URI> foaf:isPrimaryTopicOf ?about ;
-        dbpo:abstract ?abs .
-      BIND(<%URI> as ?dbpedia_uri)
-    }
-  }
-  FILTER( LANG(?abs)="%LANG" || LANG(?abs)="") .
+SELECT ?abstract ?wikipedia_uri WHERE {
+  <%URI> dbpo:abstract ?abstract ;
+         foaf:isPrimaryTopicOf ?wikipedia_uri .
+  FILTER (LANG(?abstract) = "en")
 }
 `;
 
 const ARTIST_CATEGORIES = `
-SELECT DISTINCT ?yago WHERE {
-  {
-    SELECT ?yago WHERE { <%URI> dbpo:wikiPageRedirects ?dbpedia_uri . ?dbpedia_uri a ?yago . }
+  SELECT DISTINCT ?category WHERE {
+    <%URI> dct:subject ?category .
+
+    ?other dct:subject ?category ;
+           a ?type .
+    FILTER(?type IN (dbpo:MusicalArtist, dbpo:Band, dbpo:ClassicalMusicArtist))
+
+    FILTER(?other != <%URI>)
+    FILTER(!STRENDS(STR(?category), "Living_people"))
   }
-  UNION
-  {
-    SELECT ?yago WHERE { <%URI> a ?yago . }
-  }
-FILTER(REGEX(STR(?yago),"http://dbpedia.org/class/yago/Wikicat"))
-FILTER(?yago != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
-FILTER(?yago != <http://dbpedia.org/class/yago/WikicatWomen>)
-}
-`;
+  `;
 
 const ARTIST_REDIRECT = `
 SELECT ?dbpedia_uri ?redirected_uri WHERE {
   <%URI> dbpo:wikiPageRedirects ?dbpedia_uri .
   BIND(<%URI> as ?redirected_uri)
 }
-`
+`;
 
 const ASSOCIATED_ARTISTS = `
 SELECT DISTINCT ?dbpedia_uri ?name WHERE {
@@ -80,17 +79,20 @@ SELECT DISTINCT ?dbpedia_uri ?name WHERE {
 `;
 
 const CATEGORY_DEGREES = `
-SELECT ?wikicat COUNT(DISTINCT ?name) as ?degree WHERE {
-	<%URI> a ?wikicat .
-  ?uri a ?wikicat, ?type ;
-      foaf:name ?name .
-    VALUES ?type {
-      dbpo:Band dbpo:MusicArtist dbp-yago:Composer109947232 yago:Musician110340312
-    }
-	FILTER(REGEX(STR(?wikicat),"http://dbpedia.org/class/yago/Wikicat"))
-  	FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatLivingPeople>)
-  	FILTER(?wikicat != <http://dbpedia.org/class/yago/WikicatWomen>)
-} GROUP BY ?wikicat ORDER BY ?degree
+  SELECT ?category (COUNT(DISTINCT ?artist) AS ?degree)
+  WHERE {
+    # Get categories associated with the seed artist
+    <%URI> dct:subject ?category .
+
+    # Find other artists in the same category
+    ?artist dct:subject ?category ;
+            rdf:type ?type .
+
+    FILTER(?type IN (dbo:MusicalArtist, dbo:Band, dbo:ClassicalMusicArtist))
+    FILTER(?artist != <%URI>)
+  }
+  GROUP BY ?category
+  ORDER BY DESC(?degree)
 `;
 
 const CONSTRUCT_ARTIST = `
@@ -222,30 +224,42 @@ WHERE
     ?fileid mood:filename ?filename .
   } ORDER BY ?diff
 } LIMIT 1
-`
+`;
 
 const WIKICAT_LINKS = `
-SELECT DISTINCT ?uri ?name WHERE {
- ?uri a <%YAGO_URI> ;
-   foaf:name ?name .
- { ?uri a dbpo:Band } UNION { ?uri a dbpo:MusicArtist } UNION { ?uri a dbp-yago:Composer109947232 } UNION { ?uri a yago:Musician110340312 }
- FILTER(?uri != <%ARTIST_URI>) .
-} LIMIT %LIMIT
+  PREFIX dbpo: <http://dbpedia.org/ontology/>
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+  SELECT DISTINCT ?uri ?name WHERE {
+    ?uri a <%CATEGORY_URI> ;
+         foaf:name ?name .
+
+    FILTER(?uri != <%ARTIST_URI>) .
+
+    {
+      ?uri a dbpo:Band
+    } UNION {
+      ?uri a dbpo:MusicalArtist
+    } UNION {
+      ?uri a dbpo:ClassicalMusicArtist
+    }
+  }
+  LIMIT %LIMIT
 `;
 
 module.exports.queries = {
-  "all_linked_artists": ALL_LINKED_ARTISTS,
-  "all_moodplay_artists": ALL_MOODPLAY_ARTISTS,
-  "artist_abstract": ARTIST_ABSTRACT,
-  "artist_categories": ARTIST_CATEGORIES,
-  "artist_redirect": ARTIST_REDIRECT,
-  "associated_artists": ASSOCIATED_ARTISTS,
-  "category_degrees": CATEGORY_DEGREES,
-  "construct_artist": CONSTRUCT_ARTIST,
-  "describe_artist": DESCRIBE_ARTIST,
-  "image_by_mbid": IMAGE_BY_MBID,
-  "mbid_by_entityid": MBID_BY_ENTITYID,
-  "moodplay_artists": MOODPLAY_ARTISTS,
-  "moodplay_nearest_track": MOODPLAY_NEAREST_TRACK,
-  "wikicat_links": WIKICAT_LINKS
-}
+  all_linked_artists: ALL_LINKED_ARTISTS,
+  all_moodplay_artists: ALL_MOODPLAY_ARTISTS,
+  artist_abstract: ARTIST_ABSTRACT,
+  artist_categories: ARTIST_CATEGORIES,
+  artist_redirect: ARTIST_REDIRECT,
+  associated_artists: ASSOCIATED_ARTISTS,
+  category_degrees: CATEGORY_DEGREES,
+  construct_artist: CONSTRUCT_ARTIST,
+  describe_artist: DESCRIBE_ARTIST,
+  image_by_mbid: IMAGE_BY_MBID,
+  mbid_by_entityid: MBID_BY_ENTITYID,
+  moodplay_artists: MOODPLAY_ARTISTS,
+  moodplay_nearest_track: MOODPLAY_NEAREST_TRACK,
+  wikicat_links: WIKICAT_LINKS,
+};

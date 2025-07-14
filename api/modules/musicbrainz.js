@@ -1,19 +1,23 @@
 var request = require("request");
 
 var mburi = "http://musicbrainz.org";
-var artist_search_template = '/ws/2/artist/?query=artist:%&fmt=json';
+var artist_search_template = "/ws/2/artist/?query=artist:%&fmt=json";
 var user_agent = process.env.MUSICBRAINZ_USER_AGENT || "";
 
-module.exports.artist_search = function(searchTerm, cb) {
-  var query = artist_search_template.replace('%', encodeURIComponent(searchTerm));
-  var options = { method: 'GET', uri: mburi + query,
+module.exports.artist_search = function (searchTerm, cb) {
+  var query = artist_search_template.replace(
+    "%",
+    encodeURIComponent(searchTerm),
+  );
+  var options = {
+    method: "GET",
+    uri: mburi + query,
     headers: {
-      'Content-Type': 'application/json',
-      'User-Agent': user_agent
-    }
+      "Content-Type": "application/json",
+      "User-Agent": "MusicLynx/1.0.0 ( https://musiclynx.github.io )",
+    },
   };
-  request(options, function(err, response, body)
-  {
+  request(options, function (err, response, body) {
     cb(body);
   });
-}
+};
