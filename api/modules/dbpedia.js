@@ -9,10 +9,15 @@ var p = require("./prefixes");
 var wd = require("./wikidata");
 var fi = require("./filter");
 var gr = require("./graph");
+var or = require("./openrouter");
 
 var defaultTimeout = 8000;
-// const DBP_URI = 'http://dbpedia.org/sparql';
-const DBP_URI = "http://dbpedia-live.openlinksw.com/sparql";
+
+const MIN_SENTENCE_COUNT = 3;
+
+function countSentences(text) {
+  return (text.match(/[^.!?]+[.!?]+/g) || []).length;
+}
 
 var ur = function (tm) {
   if (tm && tm.includes(":") && !tm.includes("http")) {
@@ -95,7 +100,14 @@ module.exports.get_artist_abstract = function (dbpedia_uri, mbid, name, cb) {
       result["abstract"] = json.results.bindings[0].abstract.value;
       result["wikipedia_uri"] = json.results.bindings[0].wikipedia_uri.value;
     }
-    cb(result);
+    if (countSentences(result["abstract"]) < MIN_SENTENCE_COUNT) {
+      or.generate_artist_bio(result["abstract"], function (abstract) {
+        result["abstract"] = abstract;
+        cb(result);
+      });
+    } else {
+      cb(result);
+    }
   });
 };
 

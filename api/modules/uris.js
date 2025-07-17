@@ -9,6 +9,7 @@ module.exports.uris = {
     "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url&titles=File:",
   deezer_uri: "https://api.deezer.com/search/artist/",
   musixmatch_uri: "https://api.musixmatch.com/ws/1.1/",
+  openrouter_uri: "https://openrouter.ai/api/v1/chat/completions",
   mood_uri: "http://127.0.0.1:8080",
   source_dir: "static/source/",
   dest_dir: "static/reduced/",

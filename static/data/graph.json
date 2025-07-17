@@ -30854,5 +30854,1991 @@
         "value": 1
       }
     ]
+  },
+  "77049387-0580-4a3a-a05f-d12b5d6b5042": {
+    "nodes": [
+      {
+        "name": "Pendulum",
+        "group": "Associated Artists",
+        "ranking": 1,
+        "uri": "http://dbpedia.org/resource/Pendulum_(Australian_band)"
+      },
+      {
+        "name": "Adam F",
+        "group": "Associated Artists",
+        "ranking": 1,
+        "uri": "http://dbpedia.org/resource/Adam_F"
+      },
+      {
+        "name": "Bad Company",
+        "group": "Associated Artists",
+        "ranking": 1,
+        "uri": "http://dbpedia.org/resource/Bad_Company_(drum_and_bass_group)"
+      },
+      {
+        "name": "Roman Rain",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "6d61cd51-1ab0-4417-b307-a7830794ed98"
+      },
+      {
+        "name": "Johnny Carroll",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "59ab5104-cadf-41a1-acde-4d46081e85e5"
+      },
+      {
+        "name": "The Tielman Brothers",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "54106a3d-0ee6-42eb-86af-1a9db59ea9cc"
+      },
+      {
+        "name": "Polecats",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "663d6cd0-b275-41a4-a581-4bb3cb878eb9"
+      },
+      {
+        "name": "múm",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "2b64e811-cbcd-45f7-b29d-296444cad4f1"
+      },
+      {
+        "name": "*NSYNC",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "603ba565-3967-4be1-931e-9cb945394e86"
+      },
+      {
+        "name": "Horst Müller",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "ffa240a5-8657-48d2-b22f-2af12a67630a"
+      },
+      {
+        "name": "Sara Tavares",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "ac35b735-3449-423a-a73d-1e5320e8112d"
+      },
+      {
+        "name": "Värttinä",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "79c41645-d2bf-4f53-8f17-4be34099eaf3"
+      },
+      {
+        "name": "Björk",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "87c5dedd-371d-4a53-9f7f-80522fb7f3cb"
+      },
+      {
+        "name": "Mordi",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "f32477b0-16cd-4f62-9408-7be99b8f22c0"
+      },
+      {
+        "name": "C.C.Sager",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "704b800c-3082-4718-a908-5a52d301abe9"
+      },
+      {
+        "name": "Miss Helium",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "85302be8-5909-4eb0-83f6-93e3018b5370"
+      },
+      {
+        "name": "Tito Puente",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "f19ad155-d809-4770-ab8d-7579467d9f55"
+      },
+      {
+        "name": "ALiCE'S EMOTiON",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "af31588d-8f2d-4646-bc0d-88eb08ca24af"
+      },
+      {
+        "name": "Malia",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "d75a6c36-ea55-41f2-9ec3-b2d3c4317f8a"
+      },
+      {
+        "name": "堀山俊彦",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "a20a5a14-1cf9-4f45-8b93-5d0dc6cd15c3"
+      },
+      {
+        "name": "根岸貴幸",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "b7ab2fc0-6124-4cde-a7c8-1caa65ae5d0d"
+      },
+      {
+        "name": "菅野よう子",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "5ffb73c0-b739-4231-ba22-f8d361be1d45"
+      },
+      {
+        "name": "Michael Giacchino",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "150e14bd-915d-4574-b574-f77dd7ea72ad"
+      },
+      {
+        "name": "Vitamin String Quartet",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "56cfe6aa-b464-43d2-bec7-8ec52f313e7d"
+      },
+      {
+        "name": "Soundgarden",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "153c9281-268f-4cf3-8938-f5a4593e5df4"
+      },
+      {
+        "name": "4hero",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "3d05eb8b-1644-4143-9a61-b28e33c4d85f"
+      },
+      {
+        "name": "Machinedrum",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "d1785218-d8f4-4a83-a33d-8cf737eef918"
+      },
+      {
+        "name": "Split Enz",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "2bbdc83c-3d4d-44f4-8e26-6bc748d358dd"
+      },
+      {
+        "name": "The Lurkers",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "488e2f56-76bc-446f-8089-d790a5402904"
+      },
+      {
+        "name": "High Contrast",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "889b69e3-7b18-4889-b953-9f2931597204"
+      },
+      {
+        "name": "Freestylers",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "60dd8303-5ee8-4c99-a19c-009e07c17aeb"
+      },
+      {
+        "name": "Welle: Erdball",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "67d6773b-f927-493a-ae48-b5ad7c522291"
+      },
+      {
+        "name": "Total Science",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "344c7977-1c4b-4010-a0f7-27d9506301ec"
+      },
+      {
+        "name": "Alstroemeria Records",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "85f20384-e7e8-44a8-9648-ca3eac18cbc7"
+      },
+      {
+        "name": "Les Rita Mitsouko",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "0bfe360b-4abf-4750-962c-981cc5bfc4cf"
+      },
+      {
+        "name": "Project Pitchfork",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "38e4df82-6079-42f8-91fa-904e0fecf78f"
+      },
+      {
+        "name": "Tina Turner",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "9072df14-b61e-42e2-b4f4-6bbb7fdb5586"
+      },
+      {
+        "name": "Logistics",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "49dca5fc-30b2-46be-93bd-033c53425e07"
+      },
+      {
+        "name": "Rufige Kru",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "f16b6af9-86fb-4f9a-bd7f-a05b8eb25155"
+      },
+      {
+        "name": "Fatboy Slim",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "34c63966-445c-4613-afe1-4f0e1e53ae9a"
+      },
+      {
+        "name": "Junkie XL",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "eb3f70ce-f226-428f-8d7f-046c8dbfd98f"
+      },
+      {
+        "name": "Macy Gray",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "48772747-4cda-4ba8-b470-cfd5a32e05f7"
+      },
+      {
+        "name": "Paradox",
+        "group": "Other English drum and bass musicians",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Paradox_(musician)"
+      },
+      {
+        "name": "Blame",
+        "group": "Other English drum and bass musicians",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Blame_(music_producer)"
+      },
+      {
+        "name": "Farrow",
+        "group": "Other English DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Farrow_(musician)"
+      },
+      {
+        "name": "Burns",
+        "group": "Other English DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Burns_(musician)"
+      },
+      {
+        "name": "John Fleming",
+        "group": "Other English DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/John_Fleming_(DJ)"
+      },
+      {
+        "name": "Regis",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Regis_(musician)"
+      },
+      {
+        "name": "David McEwan",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/David_McEwan_(producer)"
+      },
+      {
+        "name": "Peter Collins",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Peter_Collins_(record_producer)"
+      },
+      {
+        "name": "Richard Russell",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Richard_Russell_(XL_Recordings)"
+      },
+      {
+        "name": "David Hentschel",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/David_Hentschel"
+      },
+      {
+        "name": "Paul Adam",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Paul_Adam_(music)"
+      },
+      {
+        "name": "Steve Anderson",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Steve_Anderson_(musician)"
+      },
+      {
+        "name": "DaVinChe",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/DaVinChe"
+      },
+      {
+        "name": "Steve Robson",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Steve_Robson"
+      },
+      {
+        "name": "Hugh Padgham",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Hugh_Padgham"
+      },
+      {
+        "name": "Mayhem",
+        "group": "Other English record producers",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Mayhem_NODB"
+      },
+      {
+        "name": "Sokół",
+        "group": "Other 1977 births",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Sokół_(rapper)"
+      },
+      {
+        "name": "Melvin Brown",
+        "group": "Other 1977 births",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Melvin_E._Brown"
+      },
+      {
+        "name": "Melody",
+        "group": "Other 1977 births",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Melody_(Belgian_singer)"
+      },
+      {
+        "name": "Dry",
+        "group": "Other 1977 births",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Dry_(rapper)"
+      },
+      {
+        "name": "Kira",
+        "group": "Other 1977 births",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Kira_(Belgian_singer)"
+      },
+      {
+        "name": "Double K",
+        "group": "Other 1977 births",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Double_K_(American_musician)"
+      },
+      {
+        "name": "Ben Foster",
+        "group": "Other 1977 births",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Ben_Foster_(composer)"
+      },
+      {
+        "name": "Morris",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Morris_(singer)"
+      },
+      {
+        "name": "Craig Richards",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Craig_Richards_(DJ)"
+      },
+      {
+        "name": "PRO",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Pro_(South_African_rapper)"
+      },
+      {
+        "name": "Outbreak",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Outbreak_(DJ)"
+      },
+      {
+        "name": "Jade",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Jade_(producer)"
+      },
+      {
+        "name": "Dixon",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Dixon_(DJ)"
+      },
+      {
+        "name": "Alle Benassi",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Alle_Benassi"
+      },
+      {
+        "name": "Spiller",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Spiller"
+      },
+      {
+        "name": "Denza",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Denza_(musician)"
+      },
+      {
+        "name": "Santos",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Santos_(DJ)"
+      },
+      {
+        "name": "John Roberts",
+        "group": "Other Electronic dance music DJs",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/John_Roberts_(electronic_musician)"
+      },
+      {
+        "name": "Special",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Riley_%22Special%22_Wallace"
+      },
+      {
+        "name": "Kevin Kinsella",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Kevin_Kinsella"
+      },
+      {
+        "name": "Journalist",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Journalist_(rapper)"
+      },
+      {
+        "name": "Susan",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Susan_(Japanese_singer)"
+      },
+      {
+        "name": "",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Ak47_(rapper)"
+      },
+      {
+        "name": "John Graham",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/John_Graham_(producer)"
+      },
+      {
+        "name": "Nathan Furst",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Nathan_Furst"
+      },
+      {
+        "name": "Grace",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Grace_(Canadian_singer)"
+      },
+      {
+        "name": "Echo",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Echo_(producer)"
+      },
+      {
+        "name": "Tim Cohen",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Tim_Cohen"
+      },
+      {
+        "name": "Ani",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Ani_(recording_artist)"
+      },
+      {
+        "name": "Nico",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Nico_(Romanian_singer)"
+      },
+      {
+        "name": "Michael Price",
+        "group": "Other Place of birth missing (living people)",
+        "ranking": "0",
+        "uri": "http://dbpedia.org/resource/Michael_Price_(composer)"
+      }
+    ],
+    "links": [
+      {
+        "source": "Sokół",
+        "target": "Melvin Brown",
+        "value": 1
+      },
+      {
+        "source": "Melvin Brown",
+        "target": "Melody",
+        "value": 1
+      },
+      {
+        "source": "Melody",
+        "target": "Dry",
+        "value": 1
+      },
+      {
+        "source": "Dry",
+        "target": "Kira",
+        "value": 1
+      },
+      {
+        "source": "Kira",
+        "target": "Double K",
+        "value": 1
+      },
+      {
+        "source": "Double K",
+        "target": "Ben Foster",
+        "value": 1
+      },
+      {
+        "source": "Regis",
+        "target": "Farrow",
+        "value": 1
+      },
+      {
+        "source": "Farrow",
+        "target": "David McEwan",
+        "value": 1
+      },
+      {
+        "source": "David McEwan",
+        "target": "Burns",
+        "value": 1
+      },
+      {
+        "source": "Burns",
+        "target": "Peter Collins",
+        "value": 1
+      },
+      {
+        "source": "Peter Collins",
+        "target": "Richard Russell",
+        "value": 1
+      },
+      {
+        "source": "Richard Russell",
+        "target": "David Hentschel",
+        "value": 1
+      },
+      {
+        "source": "David Hentschel",
+        "target": "Paul Adam",
+        "value": 1
+      },
+      {
+        "source": "Paul Adam",
+        "target": "Paradox",
+        "value": 1
+      },
+      {
+        "source": "Paradox",
+        "target": "Steve Anderson",
+        "value": 1
+      },
+      {
+        "source": "Steve Anderson",
+        "target": "DaVinChe",
+        "value": 1
+      },
+      {
+        "source": "DaVinChe",
+        "target": "Steve Robson",
+        "value": 1
+      },
+      {
+        "source": "Steve Robson",
+        "target": "Hugh Padgham",
+        "value": 1
+      },
+      {
+        "source": "Hugh Padgham",
+        "target": "Blame",
+        "value": 1
+      },
+      {
+        "source": "Blame",
+        "target": "Mayhem",
+        "value": 1
+      },
+      {
+        "source": "Farrow",
+        "target": "Burns",
+        "value": 1
+      },
+      {
+        "source": "Burns",
+        "target": "John Fleming",
+        "value": 1
+      },
+      {
+        "source": "John Fleming",
+        "target": "Blame",
+        "value": 1
+      },
+      {
+        "source": "Special",
+        "target": "Kevin Kinsella",
+        "value": 1
+      },
+      {
+        "source": "Kevin Kinsella",
+        "target": "Journalist",
+        "value": 1
+      },
+      {
+        "source": "Journalist",
+        "target": "Susan",
+        "value": 1
+      },
+      {
+        "source": "Susan",
+        "target": "",
+        "value": 1
+      },
+      {
+        "source": "",
+        "target": "John Graham",
+        "value": 1
+      },
+      {
+        "source": "John Graham",
+        "target": "Nathan Furst",
+        "value": 1
+      },
+      {
+        "source": "Nathan Furst",
+        "target": "Grace",
+        "value": 1
+      },
+      {
+        "source": "Grace",
+        "target": "Echo",
+        "value": 1
+      },
+      {
+        "source": "Echo",
+        "target": "Paradox",
+        "value": 1
+      },
+      {
+        "source": "Paradox",
+        "target": "Tim Cohen",
+        "value": 1
+      },
+      {
+        "source": "Tim Cohen",
+        "target": "Ani",
+        "value": 1
+      },
+      {
+        "source": "Ani",
+        "target": "Nico",
+        "value": 1
+      },
+      {
+        "source": "Nico",
+        "target": "Michael Price",
+        "value": 1
+      },
+      {
+        "source": "Michael Price",
+        "target": "Blame",
+        "value": 1
+      },
+      {
+        "source": "Morris",
+        "target": "Craig Richards",
+        "value": 1
+      },
+      {
+        "source": "Craig Richards",
+        "target": "PRO",
+        "value": 1
+      },
+      {
+        "source": "PRO",
+        "target": "Outbreak",
+        "value": 1
+      },
+      {
+        "source": "Outbreak",
+        "target": "Jade",
+        "value": 1
+      },
+      {
+        "source": "Jade",
+        "target": "Dixon",
+        "value": 1
+      },
+      {
+        "source": "Dixon",
+        "target": "John Fleming",
+        "value": 1
+      },
+      {
+        "source": "John Fleming",
+        "target": "Alle Benassi",
+        "value": 1
+      },
+      {
+        "source": "Alle Benassi",
+        "target": "Spiller",
+        "value": 1
+      },
+      {
+        "source": "Spiller",
+        "target": "Denza",
+        "value": 1
+      },
+      {
+        "source": "Denza",
+        "target": "Santos",
+        "value": 1
+      },
+      {
+        "source": "Santos",
+        "target": "John Roberts",
+        "value": 1
+      },
+      {
+        "source": "Paradox",
+        "target": "Blame",
+        "value": 1
+      },
+      {
+        "source": "Pendulum",
+        "target": "Adam F",
+        "value": 1
+      },
+      {
+        "source": "Adam F",
+        "target": "Bad Company",
+        "value": 1
+      },
+      {
+        "source": "Roman Rain",
+        "target": "Johnny Carroll",
+        "value": 1
+      },
+      {
+        "source": "Johnny Carroll",
+        "target": "The Tielman Brothers",
+        "value": 1
+      },
+      {
+        "source": "The Tielman Brothers",
+        "target": "Polecats",
+        "value": 1
+      },
+      {
+        "source": "Polecats",
+        "target": "múm",
+        "value": 1
+      },
+      {
+        "source": "múm",
+        "target": "*NSYNC",
+        "value": 1
+      },
+      {
+        "source": "*NSYNC",
+        "target": "Horst Müller",
+        "value": 1
+      },
+      {
+        "source": "Horst Müller",
+        "target": "Sara Tavares",
+        "value": 1
+      },
+      {
+        "source": "Sara Tavares",
+        "target": "Värttinä",
+        "value": 1
+      },
+      {
+        "source": "Värttinä",
+        "target": "Björk",
+        "value": 1
+      },
+      {
+        "source": "Björk",
+        "target": "Mordi",
+        "value": 1
+      },
+      {
+        "source": "Mordi",
+        "target": "C.C.Sager",
+        "value": 1
+      },
+      {
+        "source": "C.C.Sager",
+        "target": "Miss Helium",
+        "value": 1
+      },
+      {
+        "source": "Tito Puente",
+        "target": "ALiCE'S EMOTiON",
+        "value": 1
+      },
+      {
+        "source": "ALiCE'S EMOTiON",
+        "target": "Malia",
+        "value": 1
+      },
+      {
+        "source": "Malia",
+        "target": "堀山俊彦",
+        "value": 1
+      },
+      {
+        "source": "堀山俊彦",
+        "target": "根岸貴幸",
+        "value": 1
+      },
+      {
+        "source": "根岸貴幸",
+        "target": "菅野よう子",
+        "value": 1
+      },
+      {
+        "source": "菅野よう子",
+        "target": "Michael Giacchino",
+        "value": 1
+      },
+      {
+        "source": "Michael Giacchino",
+        "target": "Vitamin String Quartet",
+        "value": 1
+      },
+      {
+        "source": "Vitamin String Quartet",
+        "target": "Soundgarden",
+        "value": 1
+      },
+      {
+        "source": "Soundgarden",
+        "target": "4hero",
+        "value": 1
+      },
+      {
+        "source": "4hero",
+        "target": "Machinedrum",
+        "value": 1
+      },
+      {
+        "source": "Machinedrum",
+        "target": "Split Enz",
+        "value": 1
+      },
+      {
+        "source": "Split Enz",
+        "target": "The Lurkers",
+        "value": 1
+      },
+      {
+        "source": "High Contrast",
+        "target": "Freestylers",
+        "value": 1
+      },
+      {
+        "source": "Freestylers",
+        "target": "Welle: Erdball",
+        "value": 1
+      },
+      {
+        "source": "Welle: Erdball",
+        "target": "Total Science",
+        "value": 1
+      },
+      {
+        "source": "Total Science",
+        "target": "Alstroemeria Records",
+        "value": 1
+      },
+      {
+        "source": "Alstroemeria Records",
+        "target": "Les Rita Mitsouko",
+        "value": 1
+      },
+      {
+        "source": "Les Rita Mitsouko",
+        "target": "Project Pitchfork",
+        "value": 1
+      },
+      {
+        "source": "Project Pitchfork",
+        "target": "Tina Turner",
+        "value": 1
+      },
+      {
+        "source": "Tina Turner",
+        "target": "Logistics",
+        "value": 1
+      },
+      {
+        "source": "Logistics",
+        "target": "Rufige Kru",
+        "value": 1
+      },
+      {
+        "source": "Rufige Kru",
+        "target": "Fatboy Slim",
+        "value": 1
+      },
+      {
+        "source": "Fatboy Slim",
+        "target": "Junkie XL",
+        "value": 1
+      },
+      {
+        "source": "Junkie XL",
+        "target": "Macy Gray",
+        "value": 1
+      }
+    ]
+  },
+  "eba5d39f-8cb7-4d54-871d-297e5d7f1aad": {
+    "nodes": [
+      {
+        "name": "Commix",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "eb132583-2351-42f0-b371-08245cfb8711"
+      },
+      {
+        "name": "Logistics",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "49dca5fc-30b2-46be-93bd-033c53425e07"
+      },
+      {
+        "name": "London Elektricity",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "0356daee-ec48-4495-bc3e-460b8a5eacad"
+      },
+      {
+        "name": "Touchwood",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "bf3c987c-15d0-473e-b9a4-29f646955f70"
+      },
+      {
+        "name": "High Contrast",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "889b69e3-7b18-4889-b953-9f2931597204"
+      },
+      {
+        "name": "Concord Dawn",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "ac0aa7e2-cb46-4e01-a8e5-d265548411c2"
+      },
+      {
+        "name": "John B",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "353856b7-8d79-4136-9ac6-7e47954e5be9"
+      },
+      {
+        "name": "Syncopix",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "b4afc42e-29d4-4273-bdf9-df545e081ef8"
+      },
+      {
+        "name": "Calibre",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "afa502e0-fb84-4cf4-b3c0-21ed0c695939"
+      },
+      {
+        "name": "Aphrodite",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "84800c46-2211-43e0-8a87-bdcbecf91932"
+      },
+      {
+        "name": "Danny Byrd",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "1b002a6c-0f6c-4335-aab6-36a74058250f"
+      },
+      {
+        "name": "Bashway",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "a084643a-ecf2-42e3-a1d9-d622137a2a29"
+      },
+      {
+        "name": "Cyantific",
+        "group": "Similar Artists By Rhythm",
+        "ranking": 1,
+        "id": "25578af1-83dc-4fbe-a3a9-587ab5424342"
+      },
+      {
+        "name": "Organized Konfusion",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "cd3f07e8-7047-418c-a325-d2028ee1b8a0"
+      },
+      {
+        "name": "Souls of Mischief",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "7b61cf8f-c042-4bd4-b64a-25cb40f3dd50"
+      },
+      {
+        "name": "Matmatah",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "276a554b-5be6-43b3-b05d-d1e6c3dadb64"
+      },
+      {
+        "name": "Cop Shoot Cop",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "75f5a20c-b468-4f2b-861d-325b1b7415d6"
+      },
+      {
+        "name": "Kelly Bailey",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "4c8a43b8-1944-4f39-8046-ffa7e76db2af"
+      },
+      {
+        "name": "This Heat",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "8e538a69-fc3b-43e1-9a6b-801ea56d6d48"
+      },
+      {
+        "name": "Deep Turtle",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "ab662c8e-cb77-4505-8b20-881e4bd2a1a6"
+      },
+      {
+        "name": "DJ Sharpnel",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "196eb856-9b51-44c4-a188-e6ac244e77fe"
+      },
+      {
+        "name": "Zion I",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "85823097-9e6c-4876-a04a-8a761a477992"
+      },
+      {
+        "name": "Tito Puente",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "f19ad155-d809-4770-ab8d-7579467d9f55"
+      },
+      {
+        "name": ":Golgatha:",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "9d0c3d6a-c1ac-46ab-9661-a8030cf48d47"
+      },
+      {
+        "name": "TAMUSIC",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "9f9a5476-22bd-48ef-8952-25cd8e3f1545"
+      },
+      {
+        "name": "Aphex Twin",
+        "group": "Similar Artists By Tonality",
+        "ranking": 1,
+        "id": "f22942a1-6f70-4f48-866e-238cb2308fbd"
+      },
+      {
+        "name": "Groove Armada",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "35723b60-732e-4bd8-957f-320b416e7b7f"
+      },
+      {
+        "name": "Asian Dub Foundation",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "db612997-f11e-424d-8b41-cf410a433656"
+      },
+      {
+        "name": "Noisia",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "ec22a32b-acab-432e-a88c-ffe6ae68fa16"
+      },
+      {
+        "name": "Junkie XL",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "eb3f70ce-f226-428f-8d7f-046c8dbfd98f"
+      },
+      {
+        "name": "Fatboy Slim",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "34c63966-445c-4613-afe1-4f0e1e53ae9a"
+      },
+      {
+        "name": "Klute",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "770ccf83-47ce-4fa1-83ec-d8fc24269784"
+      },
+      {
+        "name": "Sash!",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "29e26734-788a-44aa-8d86-a452bc4232a6"
+      },
+      {
+        "name": "Project Pitchfork",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "38e4df82-6079-42f8-91fa-904e0fecf78f"
+      },
+      {
+        "name": "Apollo 440",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "1ff10dff-7ac7-4e53-bc02-d5c3cbd8448b"
+      },
+      {
+        "name": "Paul van Dyk",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "092ca127-2e07-4cbd-9cba-e412b4ddddd9"
+      },
+      {
+        "name": "Rufige Kru",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "f16b6af9-86fb-4f9a-bd7f-a05b8eb25155"
+      },
+      {
+        "name": "Delinquent Habits",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "3391c453-9ff3-4b80-b756-f4cb2f2edbb8"
+      },
+      {
+        "name": "Alstroemeria Records",
+        "group": "Similar Artists By Timbre",
+        "ranking": 1,
+        "id": "85f20384-e7e8-44a8-9648-ca3eac18cbc7"
+      },
+      {
+        "name": "Chase & Status",
+        "group": "Other RAM Records artists",
+        "ranking": "21420",
+        "uri": "http://dbpedia.org/resource/Chase_&_Status"
+      },
+      {
+        "name": "DC Breaks",
+        "group": "Other RAM Records artists",
+        "ranking": "6510",
+        "uri": "http://dbpedia.org/resource/DC_Breaks"
+      },
+      {
+        "name": "Delta Heavy",
+        "group": "Other RAM Records artists",
+        "ranking": "5895",
+        "uri": "http://dbpedia.org/resource/Delta_Heavy"
+      },
+      {
+        "name": "Calyx",
+        "group": "Other RAM Records artists",
+        "ranking": "3798",
+        "uri": "http://dbpedia.org/resource/Calyx_(musician)"
+      },
+      {
+        "name": "Loadstar",
+        "group": "Other RAM Records artists",
+        "ranking": "7476",
+        "uri": "http://dbpedia.org/resource/Loadstar_(duo)"
+      },
+      {
+        "name": "Camo & Krooked",
+        "group": "Other RAM Records artists",
+        "ranking": "4816",
+        "uri": "http://dbpedia.org/resource/Camo_&_Krooked"
+      },
+      {
+        "name": "Teebee",
+        "group": "Other RAM Records artists",
+        "ranking": "1791",
+        "uri": "http://dbpedia.org/resource/Teebee"
+      },
+      {
+        "name": "Sub Focus",
+        "group": "Other RAM Records artists",
+        "ranking": "2682",
+        "uri": "http://dbpedia.org/resource/Sub_Focus"
+      },
+      {
+        "name": "Audio",
+        "group": "Other RAM Records artists",
+        "ranking": "2380",
+        "uri": "http://dbpedia.org/resource/Audio_(musician)"
+      },
+      {
+        "name": "Andy C",
+        "group": "Other RAM Records artists",
+        "ranking": "2079",
+        "uri": "http://dbpedia.org/resource/Andy_C"
+      },
+      {
+        "name": "Wilkinson",
+        "group": "Other RAM Records artists",
+        "ranking": "2079",
+        "uri": "http://dbpedia.org/resource/Wilkinson_(musician)"
+      },
+      {
+        "name": "Culture Shock",
+        "group": "Other RAM Records artists",
+        "ranking": "2079",
+        "uri": "http://dbpedia.org/resource/Culture_Shock_(musician)"
+      },
+      {
+        "name": "René LaVice",
+        "group": "Other RAM Records artists",
+        "ranking": "1182",
+        "uri": "http://dbpedia.org/resource/René_LaVice"
+      },
+      {
+        "name": "The Assembly",
+        "group": "Other Electronic music supergroups",
+        "ranking": "11154",
+        "uri": "http://dbpedia.org/resource/The_Assembly"
+      },
+      {
+        "name": "The Aloof",
+        "group": "Other Electronic music supergroups",
+        "ranking": "4560",
+        "uri": "http://dbpedia.org/resource/The_Aloof"
+      },
+      {
+        "name": "Electronic",
+        "group": "Other Electronic music supergroups",
+        "ranking": "9855",
+        "uri": "http://dbpedia.org/resource/Electronic_(band)"
+      },
+      {
+        "name": "Sharpe & Numan",
+        "group": "Other Electronic music supergroups",
+        "ranking": "4824",
+        "uri": "http://dbpedia.org/resource/Sharpe_&_Numan"
+      },
+      {
+        "name": "Future Brown",
+        "group": "Other Electronic music supergroups",
+        "ranking": "3220",
+        "uri": "http://dbpedia.org/resource/Future_Brown"
+      },
+      {
+        "name": "LSD",
+        "group": "Other Electronic music supergroups",
+        "ranking": "3834",
+        "uri": "http://dbpedia.org/resource/LSD_(group)"
+      },
+      {
+        "name": "Apparatjik",
+        "group": "Other Electronic music supergroups",
+        "ranking": "1893",
+        "uri": "http://dbpedia.org/resource/Apparatjik"
+      },
+      {
+        "name": "All Hail the Silence",
+        "group": "Other Electronic music supergroups",
+        "ranking": "1887",
+        "uri": "http://dbpedia.org/resource/All_Hail_the_Silence"
+      },
+      {
+        "name": "Swedish House Mafia",
+        "group": "Other Electronic music supergroups",
+        "ranking": "5321",
+        "uri": "http://dbpedia.org/resource/Swedish_House_Mafia"
+      },
+      {
+        "name": "The Black Queen",
+        "group": "Other Electronic music supergroups",
+        "ranking": "3075",
+        "uri": "http://dbpedia.org/resource/The_Black_Queen_(band)"
+      },
+      {
+        "name": "Silk City",
+        "group": "Other Electronic music supergroups",
+        "ranking": "3055",
+        "uri": "http://dbpedia.org/resource/Silk_City_(duo)"
+      },
+      {
+        "name": "Stars on 54",
+        "group": "Other Electronic music supergroups",
+        "ranking": "1779",
+        "uri": "http://dbpedia.org/resource/Stars_on_54"
+      },
+      {
+        "name": "Kylie and Garibay",
+        "group": "Other Electronic music supergroups",
+        "ranking": "3594",
+        "uri": "http://dbpedia.org/resource/Kylie_and_Garibay"
+      },
+      {
+        "name": "Jack Ü",
+        "group": "Other Electronic music supergroups",
+        "ranking": "3289",
+        "uri": "http://dbpedia.org/resource/Jack_Ü"
+      },
+      {
+        "name": "Europa",
+        "group": "Other Electronic music supergroups",
+        "ranking": "885",
+        "uri": "http://dbpedia.org/resource/Europa_(musical_duo)"
+      },
+      {
+        "name": "Rudimental",
+        "group": "Other British drum and bass music groups",
+        "ranking": "13398",
+        "uri": "http://dbpedia.org/resource/Rudimental"
+      },
+      {
+        "name": "Drumsound & Bassline Smith",
+        "group": "Other British drum and bass music groups",
+        "ranking": "8904",
+        "uri": "http://dbpedia.org/resource/Drumsound_&_Bassline_Smith"
+      },
+      {
+        "name": "Kosheen",
+        "group": "Other British drum and bass music groups",
+        "ranking": "5032",
+        "uri": "http://dbpedia.org/resource/Kosheen"
+      },
+      {
+        "name": "Pitchshifter",
+        "group": "Other British drum and bass music groups",
+        "ranking": "9360",
+        "uri": "http://dbpedia.org/resource/Pitchshifter"
+      },
+      {
+        "name": "Aquasky",
+        "group": "Other British drum and bass music groups",
+        "ranking": "3285",
+        "uri": "http://dbpedia.org/resource/Aquasky"
+      },
+      {
+        "name": "Nu:Logic",
+        "group": "Other British drum and bass music groups",
+        "ranking": "2985",
+        "uri": "http://dbpedia.org/resource/Nu:Logic"
+      },
+      {
+        "name": "Un-Cut",
+        "group": "Other British drum and bass music groups",
+        "ranking": "2985",
+        "uri": "http://dbpedia.org/resource/Un-Cut"
+      },
+      {
+        "name": "Breakbeat Era",
+        "group": "Other British drum and bass music groups",
+        "ranking": "2985",
+        "uri": "http://dbpedia.org/resource/Breakbeat_Era"
+      },
+      {
+        "name": "D*Minds",
+        "group": "Other British drum and bass music groups",
+        "ranking": "2588",
+        "uri": "http://dbpedia.org/resource/D*Minds"
+      },
+      {
+        "name": "The Prototypes",
+        "group": "Other British drum and bass music groups",
+        "ranking": "1821",
+        "uri": "http://dbpedia.org/resource/The_Prototypes"
+      },
+      {
+        "name": "The Qemists",
+        "group": "Other British drum and bass music groups",
+        "ranking": "1959",
+        "uri": "http://dbpedia.org/resource/The_Qemists"
+      },
+      {
+        "name": "Brookes Brothers",
+        "group": "Other British drum and bass music groups",
+        "ranking": "2247",
+        "uri": "http://dbpedia.org/resource/Brookes_Brothers"
+      },
+      {
+        "name": "Blu Mar Ten",
+        "group": "Other British drum and bass music groups",
+        "ranking": "1905",
+        "uri": "http://dbpedia.org/resource/Blu_Mar_Ten"
+      },
+      {
+        "name": "Fred V & Grafix",
+        "group": "Other British drum and bass music groups",
+        "ranking": "2484",
+        "uri": "http://dbpedia.org/resource/Fred_V_&_Grafix"
+      },
+      {
+        "name": "4hero",
+        "group": "Other British drum and bass music groups",
+        "ranking": "3690",
+        "uri": "http://dbpedia.org/resource/4hero"
+      },
+      {
+        "name": "The Ragga Twins",
+        "group": "Other British drum and bass music groups",
+        "ranking": "3355",
+        "uri": "http://dbpedia.org/resource/Ragga_Twins"
+      },
+      {
+        "name": "Dub War",
+        "group": "Other British drum and bass music groups",
+        "ranking": "2436",
+        "uri": "http://dbpedia.org/resource/Dub_War"
+      },
+      {
+        "name": "The Orckestra",
+        "group": "Other British supergroups",
+        "ranking": "5760",
+        "uri": "http://dbpedia.org/resource/The_Orckestra"
+      }
+    ],
+    "links": [
+      {
+        "source": "Chase & Status",
+        "target": "DC Breaks",
+        "value": 1
+      },
+      {
+        "source": "DC Breaks",
+        "target": "Delta Heavy",
+        "value": 1
+      },
+      {
+        "source": "Delta Heavy",
+        "target": "Calyx",
+        "value": 1
+      },
+      {
+        "source": "Calyx",
+        "target": "Loadstar",
+        "value": 1
+      },
+      {
+        "source": "Loadstar",
+        "target": "Rudimental",
+        "value": 1
+      },
+      {
+        "source": "Rudimental",
+        "target": "Drumsound & Bassline Smith",
+        "value": 1
+      },
+      {
+        "source": "Drumsound & Bassline Smith",
+        "target": "Kosheen",
+        "value": 1
+      },
+      {
+        "source": "Kosheen",
+        "target": "Pitchshifter",
+        "value": 1
+      },
+      {
+        "source": "Pitchshifter",
+        "target": "Aquasky",
+        "value": 1
+      },
+      {
+        "source": "Aquasky",
+        "target": "Nu:Logic",
+        "value": 1
+      },
+      {
+        "source": "Nu:Logic",
+        "target": "Un-Cut",
+        "value": 1
+      },
+      {
+        "source": "Un-Cut",
+        "target": "Breakbeat Era",
+        "value": 1
+      },
+      {
+        "source": "Breakbeat Era",
+        "target": "D*Minds",
+        "value": 1
+      },
+      {
+        "source": "D*Minds",
+        "target": "The Prototypes",
+        "value": 1
+      },
+      {
+        "source": "The Prototypes",
+        "target": "The Qemists",
+        "value": 1
+      },
+      {
+        "source": "The Qemists",
+        "target": "Brookes Brothers",
+        "value": 1
+      },
+      {
+        "source": "Brookes Brothers",
+        "target": "Blu Mar Ten",
+        "value": 1
+      },
+      {
+        "source": "Blu Mar Ten",
+        "target": "Fred V & Grafix",
+        "value": 1
+      },
+      {
+        "source": "Fred V & Grafix",
+        "target": "Apollo 440",
+        "value": 1
+      },
+      {
+        "source": "Apollo 440",
+        "target": "4hero",
+        "value": 1
+      },
+      {
+        "source": "4hero",
+        "target": "The Ragga Twins",
+        "value": 1
+      },
+      {
+        "source": "The Ragga Twins",
+        "target": "Dub War",
+        "value": 1
+      },
+      {
+        "source": "Chase & Status",
+        "target": "DC Breaks",
+        "value": 1
+      },
+      {
+        "source": "DC Breaks",
+        "target": "Delta Heavy",
+        "value": 1
+      },
+      {
+        "source": "Delta Heavy",
+        "target": "Calyx",
+        "value": 1
+      },
+      {
+        "source": "Calyx",
+        "target": "Loadstar",
+        "value": 1
+      },
+      {
+        "source": "Loadstar",
+        "target": "Camo & Krooked",
+        "value": 1
+      },
+      {
+        "source": "Camo & Krooked",
+        "target": "Teebee",
+        "value": 1
+      },
+      {
+        "source": "Teebee",
+        "target": "Sub Focus",
+        "value": 1
+      },
+      {
+        "source": "Sub Focus",
+        "target": "Audio",
+        "value": 1
+      },
+      {
+        "source": "Audio",
+        "target": "Andy C",
+        "value": 1
+      },
+      {
+        "source": "Andy C",
+        "target": "Wilkinson",
+        "value": 1
+      },
+      {
+        "source": "Wilkinson",
+        "target": "Culture Shock",
+        "value": 1
+      },
+      {
+        "source": "Culture Shock",
+        "target": "René LaVice",
+        "value": 1
+      },
+      {
+        "source": "DC Breaks",
+        "target": "The Assembly",
+        "value": 1
+      },
+      {
+        "source": "The Assembly",
+        "target": "The Aloof",
+        "value": 1
+      },
+      {
+        "source": "The Aloof",
+        "target": "Rudimental",
+        "value": 1
+      },
+      {
+        "source": "Rudimental",
+        "target": "Kosheen",
+        "value": 1
+      },
+      {
+        "source": "Kosheen",
+        "target": "Aquasky",
+        "value": 1
+      },
+      {
+        "source": "Aquasky",
+        "target": "Nu:Logic",
+        "value": 1
+      },
+      {
+        "source": "Nu:Logic",
+        "target": "Un-Cut",
+        "value": 1
+      },
+      {
+        "source": "Un-Cut",
+        "target": "Breakbeat Era",
+        "value": 1
+      },
+      {
+        "source": "Breakbeat Era",
+        "target": "D*Minds",
+        "value": 1
+      },
+      {
+        "source": "D*Minds",
+        "target": "The Prototypes",
+        "value": 1
+      },
+      {
+        "source": "The Assembly",
+        "target": "The Aloof",
+        "value": 1
+      },
+      {
+        "source": "The Aloof",
+        "target": "Electronic",
+        "value": 1
+      },
+      {
+        "source": "Electronic",
+        "target": "Sharpe & Numan",
+        "value": 1
+      },
+      {
+        "source": "Sharpe & Numan",
+        "target": "The Orckestra",
+        "value": 1
+      },
+      {
+        "source": "The Assembly",
+        "target": "The Aloof",
+        "value": 1
+      },
+      {
+        "source": "The Aloof",
+        "target": "Electronic",
+        "value": 1
+      },
+      {
+        "source": "Electronic",
+        "target": "Sharpe & Numan",
+        "value": 1
+      },
+      {
+        "source": "Sharpe & Numan",
+        "target": "Future Brown",
+        "value": 1
+      },
+      {
+        "source": "Future Brown",
+        "target": "LSD",
+        "value": 1
+      },
+      {
+        "source": "LSD",
+        "target": "Apparatjik",
+        "value": 1
+      },
+      {
+        "source": "Apparatjik",
+        "target": "All Hail the Silence",
+        "value": 1
+      },
+      {
+        "source": "All Hail the Silence",
+        "target": "Swedish House Mafia",
+        "value": 1
+      },
+      {
+        "source": "Swedish House Mafia",
+        "target": "The Black Queen",
+        "value": 1
+      },
+      {
+        "source": "The Black Queen",
+        "target": "Silk City",
+        "value": 1
+      },
+      {
+        "source": "Silk City",
+        "target": "Stars on 54",
+        "value": 1
+      },
+      {
+        "source": "Stars on 54",
+        "target": "Kylie and Garibay",
+        "value": 1
+      },
+      {
+        "source": "Kylie and Garibay",
+        "target": "Jack Ü",
+        "value": 1
+      },
+      {
+        "source": "Jack Ü",
+        "target": "Europa",
+        "value": 1
+      },
+      {
+        "source": "Drumsound & Bassline Smith",
+        "target": "Stars on 54",
+        "value": 1
+      },
+      {
+        "source": "Commix",
+        "target": "Logistics",
+        "value": 1
+      },
+      {
+        "source": "Logistics",
+        "target": "London Elektricity",
+        "value": 1
+      },
+      {
+        "source": "London Elektricity",
+        "target": "Touchwood",
+        "value": 1
+      },
+      {
+        "source": "Touchwood",
+        "target": "High Contrast",
+        "value": 1
+      },
+      {
+        "source": "High Contrast",
+        "target": "Concord Dawn",
+        "value": 1
+      },
+      {
+        "source": "Concord Dawn",
+        "target": "John B",
+        "value": 1
+      },
+      {
+        "source": "John B",
+        "target": "Syncopix",
+        "value": 1
+      },
+      {
+        "source": "Syncopix",
+        "target": "Calibre",
+        "value": 1
+      },
+      {
+        "source": "Calibre",
+        "target": "Aphrodite",
+        "value": 1
+      },
+      {
+        "source": "Aphrodite",
+        "target": "Danny Byrd",
+        "value": 1
+      },
+      {
+        "source": "Danny Byrd",
+        "target": "Bashway",
+        "value": 1
+      },
+      {
+        "source": "Bashway",
+        "target": "Cyantific",
+        "value": 1
+      },
+      {
+        "source": "Organized Konfusion",
+        "target": "Souls of Mischief",
+        "value": 1
+      },
+      {
+        "source": "Souls of Mischief",
+        "target": "Matmatah",
+        "value": 1
+      },
+      {
+        "source": "Matmatah",
+        "target": "Cop Shoot Cop",
+        "value": 1
+      },
+      {
+        "source": "Cop Shoot Cop",
+        "target": "Kelly Bailey",
+        "value": 1
+      },
+      {
+        "source": "Kelly Bailey",
+        "target": "This Heat",
+        "value": 1
+      },
+      {
+        "source": "This Heat",
+        "target": "Deep Turtle",
+        "value": 1
+      },
+      {
+        "source": "Deep Turtle",
+        "target": "DJ Sharpnel",
+        "value": 1
+      },
+      {
+        "source": "DJ Sharpnel",
+        "target": "Zion I",
+        "value": 1
+      },
+      {
+        "source": "Zion I",
+        "target": "Tito Puente",
+        "value": 1
+      },
+      {
+        "source": "Tito Puente",
+        "target": ":Golgatha:",
+        "value": 1
+      },
+      {
+        "source": ":Golgatha:",
+        "target": "TAMUSIC",
+        "value": 1
+      },
+      {
+        "source": "TAMUSIC",
+        "target": "Aphex Twin",
+        "value": 1
+      },
+      {
+        "source": "Groove Armada",
+        "target": "Asian Dub Foundation",
+        "value": 1
+      },
+      {
+        "source": "Asian Dub Foundation",
+        "target": "Noisia",
+        "value": 1
+      },
+      {
+        "source": "Noisia",
+        "target": "Junkie XL",
+        "value": 1
+      },
+      {
+        "source": "Junkie XL",
+        "target": "Fatboy Slim",
+        "value": 1
+      },
+      {
+        "source": "Fatboy Slim",
+        "target": "Klute",
+        "value": 1
+      },
+      {
+        "source": "Klute",
+        "target": "Sash!",
+        "value": 1
+      },
+      {
+        "source": "Sash!",
+        "target": "Project Pitchfork",
+        "value": 1
+      },
+      {
+        "source": "Project Pitchfork",
+        "target": "Apollo 440",
+        "value": 1
+      },
+      {
+        "source": "Apollo 440",
+        "target": "Paul van Dyk",
+        "value": 1
+      },
+      {
+        "source": "Paul van Dyk",
+        "target": "Rufige Kru",
+        "value": 1
+      },
+      {
+        "source": "Rufige Kru",
+        "target": "Delinquent Habits",
+        "value": 1
+      },
+      {
+        "source": "Delinquent Habits",
+        "target": "Alstroemeria Records",
+        "value": 1
+      }
+    ]
   }
 }
