@@ -1,5 +1,8 @@
 var express = require("express");
-var dbp = require("./modules/dbpedia");
+// Use PostgreSQL backend when USE_POSTGRES=true
+var dbp = process.env.USE_POSTGRES === 'true'
+  ? require("./modules/dbpedia-pg")
+  : require("./modules/dbpedia");
 var module_dbp = express.Router();
 
 /*
@@ -10,13 +13,18 @@ module_dbp.get("/", function (req, res) {
   console.log("Dbpedia module root");
 });
 
-module_dbp.get("/get_artist_abstract/:mbid/:name", function (req, res) {
-  var mbid = req.params.mbid;
-  var name = req.params.name;
-  dbp.get_artist_abstract(mbid, name, function (abstract) {
-    res.send(abstract);
-  });
-});
+module_dbp.get(
+  "/get_artist_abstract/:dbpedia_uri/:mbid/:name",
+  function (req, res) {
+    var b = Buffer.from(req.params.dbpedia_uri, "base64");
+    var dbp_uri = b.toString();
+    var mbid = req.params.mbid;
+    var name = req.params.name;
+    dbp.get_artist_abstract(dbp_uri, mbid, name, function (abstract) {
+      res.send(abstract);
+    });
+  },
+);
 
 module_dbp.get(
   "/get_artist_abstract_directly/:dbpedia_uri",

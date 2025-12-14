@@ -1,7 +1,8 @@
 var express = require("express");
 var ab = require("./acousticbrainz");
 var mp = require("./moodplay");
-var dbp = require("./dbpedia");
+// Use PostgreSQL backend instead of SPARQL/DBpedia
+var dbp = process.env.USE_POSTGRES === 'true' ? require("./dbpedia-pg") : require("./dbpedia");
 var msx = require("./musixmatch");
 var fi = require("./filter");
 var jsonfile = require("jsonfile");

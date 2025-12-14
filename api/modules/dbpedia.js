@@ -11,8 +11,10 @@ var fi = require("./filter");
 var gr = require("./graph");
 
 var defaultTimeout = 8000;
-// const DBP_URI = 'http://dbpedia.org/sparql';
-const DBP_URI = "http://dbpedia-live.openlinksw.com/sparql";
+// Updated to use MusicLynx Fuseki (reliable, self-hosted)
+const DBP_URI = "http://16.170.214.219:3030/musiclynx/query";
+// const DBP_URI = 'http://dbpedia.org/sparql'; // Old unreliable
+// const DBP_URI = "http://dbpedia-live.openlinksw.com/sparql"; // Old unreliable
 
 var ur = function (tm) {
   if (tm && tm.includes(":") && !tm.includes("http")) {
