@@ -1,6 +1,8 @@
 var express = require("express");
 var b64 = require("base-64");
-var db = require("./modules/dbpedia");
+var db = process.env.USE_POSTGRES === 'true'
+  ? require("./modules/dbpedia-pg")
+  : require("./modules/dbpedia");
 var mb = require("./modules/musicbrainz");
 var sa = require("./modules/sameas");
 var lx = require("./modules/musiclynx");
