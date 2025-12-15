@@ -73,7 +73,7 @@ async function getCategories(dbpedia_uri) {
  */
 async function getAllLinkedArtists(dbpedia_uri) {
   const query = `
-    WITH artist_categories AS (
+    WITH source_artist_categories AS (
       SELECT category_uri
       FROM artist_categories
       WHERE artist_uri = $1
@@ -83,7 +83,7 @@ async function getAllLinkedArtists(dbpedia_uri) {
         ac.category_uri,
         COUNT(DISTINCT ac.artist_uri) as degree
       FROM artist_categories ac
-      WHERE ac.category_uri IN (SELECT category_uri FROM artist_categories)
+      WHERE ac.category_uri IN (SELECT category_uri FROM source_artist_categories)
       GROUP BY ac.category_uri
     ),
     linked_artists AS (
@@ -94,7 +94,7 @@ async function getAllLinkedArtists(dbpedia_uri) {
         ARRAY_AGG(DISTINCT ac.category_uri) as category_uris
       FROM artist_categories ac
       JOIN artists a ON ac.artist_uri = a.uri
-      WHERE ac.category_uri IN (SELECT category_uri FROM artist_categories)
+      WHERE ac.category_uri IN (SELECT category_uri FROM source_artist_categories)
         AND ac.artist_uri != $1
       GROUP BY a.uri, a.name
     )

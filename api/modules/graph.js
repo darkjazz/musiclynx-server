@@ -280,11 +280,23 @@ module.exports.get_artist_graph = function (
   degree,
   cb,
 ) {
-  getLocalArtistGraph(id, function (local_graph) {
-    if (local_graph) {
-      console.log(`Found local graph for ${id}`);
-      cb(local_graph);
-    } else {
+  // Skip cache when using PostgreSQL backend (it's fast enough)
+  const useCache = process.env.USE_POSTGRES !== 'true';
+
+  if (useCache) {
+    getLocalArtistGraph(id, function (local_graph) {
+      if (local_graph) {
+        console.log(`Found local graph for ${id}`);
+        cb(local_graph);
+        return;
+      }
+      generateGraph();
+    });
+  } else {
+    generateGraph();
+  }
+
+  function generateGraph() {
       dbp.get_artist_redirect(dbpedia_uri, (redirect) => {
         if (redirect.length > 0) {
           dbpedia_uri = redirect[0]["dbpedia_uri"]["value"];
@@ -350,7 +362,10 @@ module.exports.get_artist_graph = function (
                     });
                   }
                 });
-                if (isValidUUID(id)) storeArtistGraph(id, graph);
+                // Only store to cache if not using PostgreSQL
+                if (useCache && isValidUUID(id)) {
+                  storeArtistGraph(id, graph);
+                }
                 cb(graph);
               } else {
                 cb({ error: "no linked artists found" });
@@ -359,6 +374,5 @@ module.exports.get_artist_graph = function (
           });
         });
       });
-    }
-  });
+  }
 };
