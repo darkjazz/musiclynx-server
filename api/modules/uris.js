@@ -1,5 +1,7 @@
 module.exports.uris = {
-  dbpedia_uri: "https://dbpedia.org/sparql",
+  // Updated to use MusicLynx Fuseki triple store (reliable, self-hosted)
+  dbpedia_uri: "http://16.170.214.219:3030/musiclynx/query",
+  // dbpedia_uri: "https://dbpedia.org/sparql", // Old unreliable endpoint
   sameas: "http://sameas.org/",
   bbc_artists: "http://www.bbc.co.uk/music/artists/",
   dbpedia_resource: "http://dbpedia.org/resource/",
