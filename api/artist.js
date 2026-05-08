@@ -5,15 +5,22 @@ var db = process.env.USE_POSTGRES === 'true'
   : require("./modules/dbpedia");
 var mb = require("./modules/musicbrainz");
 var sa = require("./modules/sameas");
-var lx = require("./modules/musiclynx");
-var ab = require("./modules/acousticbrainz");
-var mp = require("./modules/moodplay");
+var lx = process.env.USE_POSTGRES === 'true'
+  ? require("./modules/musiclynx-pg")
+  : require("./modules/musiclynx");
+var ab = process.env.USE_POSTGRES === 'true'
+  ? require("./modules/acousticbrainz-pg")
+  : require("./modules/acousticbrainz");
+var mp = process.env.USE_POSTGRES === 'true'
+  ? require("./modules/moodplay-pg")
+  : require("./modules/moodplay");
 var gr = require("./modules/graph");
 
 var module_mls = express.Router();
 
 var featured = [
-  // { id: "6ac275dd-eb37-42cf-9a60-6b147320c7be", name: "KNEECAP" },
+  { id: "6ac275dd-eb37-42cf-9a60-6b147320c7be", name: "KNEECAP" },
+  { id: "b49ec275-ac01-4807-a612-267651cc5716", name: "kurivari" },
   // { id: "d1bc5be1-f552-4e2e-95ae-da8d6a4d3c17", name: "Bob Vylan" },
   { id: "b8e3d1ae-5983-4af1-b226-aa009b294111", name: "TR/ST" },
   { id: "ba0257f5-ceb9-4962-8759-4160f3e3e469", name: "Spring Heel Jack" },
@@ -51,6 +58,8 @@ var featured = [
   { id: "2674597f-6c40-47cc-b980-67f94725f7a7", name: "Najwa Karam" },
   { id: "2841d983-f8c3-432a-af02-7407a84580a8", name: "Merzbow" },
   { id: "2013f3af-51a3-404d-9afc-91b3f277ea4e", name: "Oumou Sangaré" },
+  { id: "45738c82-0e54-46ec-91b0-4a7b34506644", name: "Public Memory" },
+  { id: "29b03124-87df-4ee1-8d81-d46381522ec4", name: "SHXCXCHCXSH" },
 ];
 
 /*
@@ -77,15 +86,20 @@ module_mls.get("/get_featured_artists", function (req, res) {
 Get Artist By MusicBrainz ID: <span>/get_mb_artist/:mbid/:name</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_mb_artist/1dcc8968-f2cd-441c-beda-6270f70f2863/Hole
 */
-module_mls.get("/get_mb_artist/:mbid/:name", function (req, res) {
+module_mls.get("/get_mb_artist/:mbid/:name/:user_guid?", function (req, res) {
   var mbid = req.params.mbid;
   var name = req.params.name;
   lx.find_dbpedia_link(mbid, function (dbp_uri) {
     if (typeof dbp_uri === "object" && "error" in dbp_uri) {
+      // No DBpedia link — use synthetic URI so get_artist_graph URL stays valid
+      // graph.js handles empty DBpedia results and still builds from AB data
       return res.send({
-        error: "DBpedia link not found",
         id: mbid,
-        name: name,
+        name: decodeURIComponent(name),
+        dbpedia_uri: `http://musicbrainz.org/artist/${mbid}`,
+        abstract: "",
+        categories: [],
+        associated_artists: [],
       });
     }
     db.get_artist_abstract(dbp_uri, mbid, name, function (artist) {
@@ -107,16 +121,19 @@ module_mls.get("/get_mb_artist/:mbid/:name", function (req, res) {
 Get Artist By Dbpedia URI (base-64 encoded): <span>/get_mb_artist/:dbpedia_uri/:name</span>
 Example: http://musiclynx-api.herokuapp.com/artist/get_dbp_artist/aHR0cDovL2RicGVkaWEub3JnL3Jlc291cmNlL1BpeGllcw==/Pixies
 */
-module_mls.get("/get_dbp_artist/:dbpedia_uri/:name", function (req, res) {
+module_mls.get("/get_dbp_artist/:dbpedia_uri/:name/:user_guid?", function (req, res) {
   var b = Buffer.from(req.params.dbpedia_uri, "base64");
   var dbp_uri = b.toString();
   var name = req.params.name;
   lx.find_musicbrainz_id(dbp_uri, function (mbid) {
     if (typeof mbid === "object" && "error" in mbid) {
       return res.send({
-        error: "DBpedia link not found",
+        id: "",
+        name: decodeURIComponent(name),
         dbpedia_uri: dbp_uri,
-        name: name,
+        abstract: "",
+        categories: [],
+        associated_artists: [],
       });
     }
     db.get_artist_abstract(dbp_uri, mbid, name, function (artist) {
@@ -205,6 +222,10 @@ module_mls.get(
     });
   },
 );
+
+module_mls.get("/log_category/:category/:guid", function (req, res) {
+  res.send({ status: "ok" });
+});
 
 module_mls.get("/remove_from_cache/:mbid", function (req, res) {
   var id = req.params.mbid;

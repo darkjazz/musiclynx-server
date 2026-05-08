@@ -201,15 +201,23 @@ module.exports = {
   get_artist_abstract: (dbpedia_uri, mbid, name, cb) => {
     getArtistAbstract(dbpedia_uri)
       .then(result => {
+        const fallback = {
+          id: mbid,
+          name: name || '',
+          dbpedia_uri: dbpedia_uri,
+          abstract: '',
+        };
         if (result) {
           result.id = mbid;
           result.name = name || result.name;
+          cb(result);
+        } else {
+          cb(fallback);
         }
-        cb(result || {});
       })
       .catch(err => {
         console.error('Error getting artist abstract:', err);
-        cb({});
+        cb({ id: mbid, name: name || '', dbpedia_uri: dbpedia_uri, abstract: '' });
       });
   },
 

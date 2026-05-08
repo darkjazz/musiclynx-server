@@ -13,6 +13,22 @@ module.exports.get_artist_id = function(term, cb) {
   })
 }
 
+module.exports.get_track_preview = function(title, artist, cb) {
+  var q = encodeURIComponent(`track:"${title}" artist:"${artist}"`);
+  var uri = 'https://api.deezer.com/search?q=' + q + '&limit=1&output=json';
+  request({ method: 'GET', uri: uri }, function(err, response, body) {
+    if (err) return cb(null);
+    try {
+      var json = JSON.parse(body);
+      if (json.data && json.data.length > 0 && json.data[0].preview) {
+        cb({ preview: json.data[0].preview, cover: json.data[0].album.cover_medium });
+      } else {
+        cb(null);
+      }
+    } catch(e) { cb(null); }
+  });
+}
+
 module.exports.get_deezer_playlist = function(term, cb) {
   var query = "?q=" + term + "&output=json";
   request({ method: 'GET', uri: uris.deezer_uri + query }, function(err, response, body)

@@ -1,5 +1,7 @@
 var express = require('express');
-var mp = require('./modules/moodplay');
+var mp = process.env.USE_POSTGRES === 'true'
+  ? require('./modules/moodplay-pg')
+  : require('./modules/moodplay');
 var module_mp = express.Router();
 
 module_mp.get('/get_similar_artists/:name/:limit', function(req, res) {

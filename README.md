@@ -2,14 +2,29 @@
 
 This is the server component of MusicLynx (https://github.com/darkjazz/musiclynx)
 
-It is currently deployed as a Heroku App: (https://musiclynx-api.herokuapp.com/)
+## Running locally
 
-The component can be started by typing the following in the command line terminal:
+Requires Node.js and a local PostgreSQL instance with the `musiclynx` database.
+
+Create a `.env` file in this directory (already present locally):
+```
+USE_POSTGRES=true
+DATABASE_URL=postgresql:///musiclynx
+```
+
+Start the server:
 ```
 node musiclynx-server.js
 ```
 
-In order to initialise environmental variables including various API keys, modify the init.sh script and then run it:
+The server listens on port 8080 by default (`http://localhost:8080`).
+
+To use a different port or add API keys, set environment variables before starting:
+```
+PORT=8080 YOUTUBE_API_KEY=... node musiclynx-server.js
+```
+
+Alternatively, copy `init.sh.in` to `init.sh`, fill in your API keys, and run it:
 ```
 ./init.sh
 ```
