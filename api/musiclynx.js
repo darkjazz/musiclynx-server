@@ -1,5 +1,7 @@
 var express = require("express");
-var ml = require("./modules/musiclynx");
+var ml = process.env.USE_POSTGRES === 'true'
+  ? require("./modules/musiclynx-pg")
+  : require("./modules/musiclynx");
 
 var module_ml = express.Router();
 

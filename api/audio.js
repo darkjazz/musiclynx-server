@@ -31,4 +31,14 @@ module_au.get('/get_deezer_playlist/:term', function(req, res, next) {
   })
 });
 
+module_au.get('/get_track_preview', function(req, res) {
+  var title = req.query.title;
+  var artist = req.query.artist;
+  if (!title || !artist) return res.status(400).json({ error: 'missing title or artist' });
+  au.get_track_preview(title, artist, function(result) {
+    if (!result) return res.status(404).json({ error: 'not found' });
+    res.json(result);
+  });
+});
+
 module.exports = module_au;

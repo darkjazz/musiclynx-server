@@ -5,14 +5,39 @@
 
 const { Pool } = require('pg');
 
-// Create connection pool
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },  // Always use SSL for RDS
+// Build pool config — supports both split env vars (ECS) and DATABASE_URL (local)
+const poolConfig = {
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
-});
+};
+
+if (process.env.DB_HOST) {
+  // ECS: credentials injected individually from Secrets Manager
+  poolConfig.host = process.env.DB_HOST;
+  poolConfig.port = parseInt(process.env.DB_PORT || '5432');
+  poolConfig.database = process.env.DB_NAME || 'musiclynx';
+  poolConfig.user = process.env.DB_USERNAME;
+  poolConfig.password = process.env.DB_PASSWORD;
+  poolConfig.ssl = { rejectUnauthorized: false };
+} else {
+  // Local: DATABASE_URL, detect Unix socket (peer auth, no SSL)
+  const dbUrl = process.env.DATABASE_URL || '';
+  const isLocal = dbUrl.includes('localhost') || dbUrl.includes('127.0.0.1')
+    || dbUrl.startsWith('postgresql:///') || dbUrl.includes('/var/run/');
+
+  if (isLocal) {
+    const dbName = dbUrl.replace('postgresql:///', '').split('?')[0] || 'musiclynx';
+    poolConfig.database = dbName;
+    poolConfig.host = '/var/run/postgresql';
+  } else {
+    poolConfig.connectionString = dbUrl;
+    poolConfig.ssl = { rejectUnauthorized: false };
+  }
+}
+
+// Create connection pool
+const pool = new Pool(poolConfig);
 
 // Handle pool errors
 pool.on('error', (err) => {

@@ -28,6 +28,7 @@ app.use('/wikidata', require('./api/wikidata'));
 app.use('/sameas', require('./api/sameas'));
 app.use('/audio', require('./api/audio'));
 app.use('/musiclynx', require('./api/musiclynx'));
+app.use('/track', require('./api/track'));
 app.use('/musixmatch', require('./api/musixmatch'));
 app.use('/moodplay', require('./api/moodplay'));
 // app.use('/lastfm', require('./api/lastfm'));
