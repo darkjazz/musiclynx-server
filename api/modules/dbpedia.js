@@ -297,6 +297,10 @@ module.exports.get_category_degrees = function (dbpedia_uri, cb) {
   });
 };
 
+module.exports.get_artist_community = function (mbid, cb) {
+  cb(null);
+};
+
 module.exports.get_artist_redirect = function (dbpedia_uri, cb) {
   var param = { URI: dbpedia_uri };
   var query = qb.buildQuery("artist_redirect", param);

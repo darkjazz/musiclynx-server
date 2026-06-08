@@ -176,6 +176,62 @@ async function searchArtists(searchTerm, limit = 20) {
 }
 
 /**
+ * Get artist genre community and dominant genre labels.
+ *
+ * For direct-tagged artists returns their actual genre tags ordered by
+ * global popularity. For propagation/autotagger artists returns the top
+ * genres for the assigned community.
+ */
+async function getArtistCommunity(mbid) {
+  if (!mbid) return null;
+
+  const commResult = await db.query(
+    `SELECT community_id, community_name, content_type, source, confidence
+     FROM artist_community
+     WHERE artist_mbid = $1::uuid`,
+    [mbid]
+  );
+
+  if (commResult.rows.length === 0) return null;
+
+  const comm = commResult.rows[0];
+
+  let genreResult;
+  if (comm.source === 'direct') {
+    genreResult = await db.query(
+      `SELECT g.name
+       FROM artist_links al
+       JOIN artist_genres ag ON ag.artist_uri = al.dbpedia_uri
+       JOIN genres g ON g.uri = ag.genre_uri
+       LEFT JOIN community_top_genres ctg
+         ON ctg.community_id = g.community_id AND ctg.name = g.name
+       WHERE al.mbid = $1::uuid
+         AND g.community_id IS NOT NULL
+       ORDER BY COALESCE(ctg.artist_count, 0) DESC
+       LIMIT 5`,
+      [mbid]
+    );
+  } else {
+    genreResult = await db.query(
+      `SELECT name FROM community_top_genres
+       WHERE community_id = $1
+       ORDER BY rank
+       LIMIT 5`,
+      [comm.community_id]
+    );
+  }
+
+  return {
+    id: comm.community_id,
+    name: comm.community_name,
+    content_type: comm.content_type,
+    source: comm.source,
+    confidence: comm.confidence,
+    genres: genreResult.rows.map(r => r.name),
+  };
+}
+
+/**
  * Get random artists
  */
 async function getRandomArtists(limit = 10) {
@@ -287,6 +343,15 @@ module.exports = {
       .catch(err => {
         console.error('Error constructing artist:', err);
         cb({});
+      });
+  },
+
+  get_artist_community: (mbid, cb) => {
+    getArtistCommunity(mbid)
+      .then(result => cb(result))
+      .catch(err => {
+        console.error('Error getting artist community:', err);
+        cb(null);
       });
   },
 

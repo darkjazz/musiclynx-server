@@ -93,13 +93,26 @@ module_mls.get("/get_mb_artist/:mbid/:name/:user_guid?", function (req, res) {
     if (typeof dbp_uri === "object" && "error" in dbp_uri) {
       // No DBpedia link — use synthetic URI so get_artist_graph URL stays valid
       // graph.js handles empty DBpedia results and still builds from AB data
-      return res.send({
+      var artist = {
         id: mbid,
         name: decodeURIComponent(name),
         dbpedia_uri: `http://musicbrainz.org/artist/${mbid}`,
         abstract: "",
         categories: [],
         associated_artists: [],
+      };
+      return db.get_artist_community(mbid, function (community) {
+        if (community) {
+          artist.community = {
+            id: community.id,
+            name: community.name,
+            content_type: community.content_type,
+            source: community.source,
+            confidence: community.confidence,
+          };
+          artist.genres = community.genres;
+        }
+        res.send(artist);
       });
     }
     db.get_artist_abstract(dbp_uri, mbid, name, function (artist) {
@@ -108,9 +121,21 @@ module_mls.get("/get_mb_artist/:mbid/:name/:user_guid?", function (req, res) {
         artist["categories"] = categories;
         db.get_associated_artists(dbp_uri, function (associated_artists) {
           artist["associated_artists"] = associated_artists;
-          if (artistIsFeatured(artist.id))
-            artist.image = "./assets/featured/" + artist.id + ".jpg";
-          res.send(artist);
+          db.get_artist_community(artist.id, function (community) {
+            if (community) {
+              artist["community"] = {
+                id: community.id,
+                name: community.name,
+                content_type: community.content_type,
+                source: community.source,
+                confidence: community.confidence,
+              };
+              artist["genres"] = community.genres;
+            }
+            if (artistIsFeatured(artist.id))
+              artist.image = "./assets/featured/" + artist.id + ".jpg";
+            res.send(artist);
+          });
         });
       });
     });
@@ -142,9 +167,21 @@ module_mls.get("/get_dbp_artist/:dbpedia_uri/:name/:user_guid?", function (req, 
         artist["categories"] = categories;
         db.get_associated_artists(dbp_uri, function (associated_artists) {
           artist["associated_artists"] = associated_artists;
-          if (artistIsFeatured(artist.id))
-            artist.image = "./assets/featured/" + artist.id + ".jpg";
-          res.send(artist);
+          db.get_artist_community(artist.id, function (community) {
+            if (community) {
+              artist["community"] = {
+                id: community.id,
+                name: community.name,
+                content_type: community.content_type,
+                source: community.source,
+                confidence: community.confidence,
+              };
+              artist["genres"] = community.genres;
+            }
+            if (artistIsFeatured(artist.id))
+              artist.image = "./assets/featured/" + artist.id + ".jpg";
+            res.send(artist);
+          });
         });
       });
     });

@@ -60,7 +60,6 @@ async function getTrackGraph(mbid) {
   const client = await db.connect();
   let rows;
   try {
-    await client.query('SET ivfflat.probes = 20');
     const result = await client.query(`
       SELECT * FROM (
         SELECT 'timbre' AS dim, v.mbid, v.timbre <-> q.timbre AS dist
